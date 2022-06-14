@@ -1,0 +1,29 @@
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 20px;
+}
+.gameBox {
+    border-radius: 20px;
+    background-color: rgb(250, 198, 164);
+    height: 500px;
+    width: 500px;
+}
+
+.gameDirection {
+    text-align: center;
+}
+
+.gameDirection h2 {
+    font-size: 40px;
+    text-decoration: underline;
+    letter-spacing: .20rem;
+}
+
+.directionItems {
+    padding: 5px 50px;
+}
+.directionItems li {
+    padding: 20px 0;
+}
