@@ -2,46 +2,55 @@
   text-align: center;
   font-size: 30px;
 }
-.settingsBox h2{
-    margin: 20px 0 10px;
+.settingsBox h2 {
+  margin: 20px 0 10px;
 }
 
 .settingsForm {
-    /* background-color: antiquewhite; */
-   
-    font-size: 26px;
-  
+  /* background-color: antiquewhite; */
+
+  font-size: 26px;
 }
 
 .settingsForm div {
-    margin: 10px;
+  margin: 10px;
 }
 
 .settingsForm input {
-    /* background-color: aliceblue; */
-    border-radius: 5px;
-    font-size: 24px;
-    margin: 20px 10px;
+  /* background-color: aliceblue; */
+  border-radius: 5px;
+  font-size: 24px;
+  margin: 20px 10px;
 }
 
-
 .settingsForm label {
-    cursor: pointer;
-    padding: 0 10px;
+  cursor: pointer;
+  padding: 0 10px;
 }
 
 .okBtn {
-    cursor: pointer;
-    padding: 10px 20px;
-    border-radius: 5px;
-    border: none;
-    background-color: orangered;
+  cursor: pointer;
+  padding: 10px 20px;
+  border-radius: 5px;
+  border: none;
+  background-color: orangered;
+  box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.3);
+  opacity: 1;
+  transition: transform 0.3s ease;
+  transition: opacity 0.3s ease;
 }
 
-.okBtn:hover{
-    opacity: .8;
+.okBtn:hover {
+  opacity: 0.8;
+  
+}
+
+.okBtn:active {
+  transition: box-shadow 0.2s;
+  transform: translateY(4px);
+  box-shadow: 1px 1px 10px rgba(0, 0, 0, 0.3);
 }
 
 .btnContainer {
-    padding-top: 20px;
+  padding-top: 20px;
 }
