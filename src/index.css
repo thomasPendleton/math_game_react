@@ -1,3 +1,6 @@
+* {
+  box-sizing: border-box;
+}
 body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
@@ -5,7 +8,7 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-   background-color: rgb(255, 255, 245);
+  background-color: rgb(255, 255, 245);
 }
 
 code {
@@ -13,3 +16,122 @@ code {
     monospace;
 }
 
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-top: 20px;
+}
+
+/* _________________________________________________ */
+/* PLAY NOW */
+/* _________________________________________________ */
+
+
+
+.question h4 {
+  margin: 0px;
+}
+
+.questionContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  /* background-color: aliceblue; */
+  height: 100%;
+  
+}
+
+.question {
+  /* display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center; */
+  text-align: right;
+  font-size: 5rem;
+}
+
+.secondNumber {
+  position: relative;
+  
+}
+.line {
+  background-color: black;
+  height: 2px;
+  width: 30%;
+  margin: 10px auto;
+}
+
+.operation {
+  font-size: 3rem;
+  position: absolute;
+  left: -38px;
+  bottom: 8px;
+}
+
+.answer {
+  width: 30%;
+  font-size: 5rem;
+  border-radius: 5px;
+  text-align: center;
+}
+
+/* _________________________________________________ */
+/* Game Directions */
+/* _________________________________________________ */
+
+.gameBox {
+  border-radius: 20px;
+  background-color: rgb(250, 198, 164);
+  height: 500px;
+  width: 500px;
+}
+
+.gameDirection {
+  text-align: center;
+}
+
+.gameDirection h2 {
+  font-size: 40px;
+  text-decoration: underline;
+  letter-spacing: 0.2rem;
+}
+
+.directionItems {
+  padding: 5px 50px;
+}
+.directionItems li {
+  padding: 20px 0;
+}
+
+/* _________________________________________________ */
+/*  */
+/* _________________________________________________ */
+
+
+
+
+
+
+
+/* _________________________________________________ */
+/* Input Spin button Delete */
+/* _________________________________________________ */
+
+/* Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+input[type='number'] {
+  -moz-appearance: textfield;
+}
+
+/* _________________________________________________ */
+/*  */
+/* _________________________________________________ */
