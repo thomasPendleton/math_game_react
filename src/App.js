@@ -5,11 +5,12 @@ import GameBox from './components/GameBox/GameBox'
 function App() {
   const [correct, setCorrect] = useState(0)
   const [wrong, setWrong] = useState(0)
+  const [operation, setOperation] = useState("multiplication")
   const [value, setValue] = useState(2)
   const [firstNumber, setFirstNumber] = useState(12)
   const [secondNumber, setSecondNumber] = useState(1)
   const [playerName, setPlayerName] = useState('')
-
+  
   function randomMath(x) {
     return Math.floor(Math.random() * 12)+ 1
   }
@@ -39,6 +40,7 @@ function App() {
       />
       <GameBox
         value={value}
+        player={setPlayerName}
         firstNumber={firstNumber}
         secondNumber={secondNumber}
       />

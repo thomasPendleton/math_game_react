@@ -1,5 +1,6 @@
 .highScoreContainer {
     text-align: center;
     font-size: 26px;
-
+    /* Remove min width later when data is added */
+    min-width: 350px;
 }

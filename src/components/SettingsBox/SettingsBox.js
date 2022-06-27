@@ -1,14 +1,35 @@
-import React from 'react'
+import React, { useState } from 'react'
 import './SettingsBox.style.css'
 
-const SettingsBox = () => {
+const SettingsBox = ({ player }) => {
+  const [name, setName] = useState('')
+
+  const handlePlayerSumbit = (e) => {
+    e.preventDefault()
+    player(name)
+  }
+
+  const onNameChange = (e) => {
+    setName(e.target.value)
+  }
+
   return (
     <div className="settingsBox">
       <h2>Settings</h2>
-      <form action="submit" className="settingsForm">
+      <form
+        action="submit"
+        className="settingsForm"
+        onSubmit={handlePlayerSumbit}
+      >
         <div className="playerName">
           <label htmlFor="playerName">Player Name: </label>
-          <input type="text" id="playerName" />
+          <input
+            type="text"
+            id="playerName"
+            onChange={(e) => {
+              onNameChange(e)
+            }}
+          />
         </div>
 
         <input
@@ -35,7 +56,12 @@ const SettingsBox = () => {
 
         <br />
         <div className="btnContainer">
-          <input type="submit" value="OK" className="okBtn" onClick={() => {}} />
+          <input
+            type="submit"
+            value="OK"
+            className="okBtn"
+            onClick={() => {}}
+          />
         </div>
       </form>
     </div>

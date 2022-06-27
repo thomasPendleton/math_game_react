@@ -11,10 +11,7 @@ body {
   background-color: rgb(255, 255, 245);
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
-}
+
 
 .container {
   display: flex;
@@ -86,7 +83,8 @@ code {
   border-radius: 20px;
   background-color: rgb(250, 198, 164);
   height: 500px;
-  width: 500px;
+  max-width: 500px;
+  margin: 0 5px;
 }
 
 .gameDirection {
