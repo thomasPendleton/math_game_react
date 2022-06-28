@@ -33,7 +33,7 @@
   padding: 10px 20px;
   border-radius: 5px;
   border: none;
-  background-color: orangered;
+  background-color: rgb(252, 87, 26);
   box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.3);
   opacity: 1;
   transition: transform 0.3s ease;
