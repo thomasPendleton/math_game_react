@@ -7,7 +7,7 @@
 }
 
 .settingsForm {
-  /* background-color: antiquewhite; */
+
 
   font-size: 26px;
 }
@@ -17,7 +17,8 @@
 }
 
 .settingsForm input {
-  /* background-color: aliceblue; */
+  box-shadow: inset 1px 1px 3px 0 rgba(189,191,192,0.90);
+  
   border-radius: 5px;
   font-size: 24px;
   margin: 20px 10px;
