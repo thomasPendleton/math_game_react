@@ -22,46 +22,62 @@ const SettingsBox = ({ player }) => {
         onSubmit={handlePlayerSumbit}
       >
         <div className="playerName">
-          <label htmlFor="playerName">Player Name: </label>
-          <input
-            type="text"
-            id="playerName"
-            onChange={(e) => {
-              onNameChange(e)
-            }}
-          />
+          <label htmlFor="playerName">
+            Player Name:
+            <input
+              type="text"
+              id="playerName"
+              onChange={(e) => {
+                onNameChange(e)
+              }}
+            />
+          </label>
         </div>
-
-        <input
-          type="radio"
-          name="math"
-          id="multiplcation"
-          value="mulitplcation"
-          defaultChecked
-        />
-        <label htmlFor="multiplcation">Multiplcation</label>
-
-        <input
-          type="radio"
-          name="math"
-          id="add/subtract"
-          value="add/subtract"
-        />
-        <label htmlFor="add/subtract">Add/Subtract</label>
-        <br />
-        <input type="radio" name="time" id="90" value="90" defaultChecked />
-        <label htmlFor="90">90 seconds</label>
-        <input type="radio" name="time" id="180" value="180" />
-        <label htmlFor="180">180 seconds</label>
-
-        <br />
-        <div className="btnContainer">
+        <fieldset>
+          <label htmlFor="multiplcation">
           <input
+            type="radio"
+            name="math"
+            id="multiplcation"
+            value="mulitplcation"
+            defaultChecked
+          />
+          Multiplcation
+        </label>
+        <label htmlFor="add/subtract">
+          <input
+            type="radio"
+            name="math"
+            id="add/subtract"
+            value="add/subtract"
+          />
+          Add/Subtract
+        </label>
+        </fieldset>
+
+        
+
+       
+        <fieldset>
+          <label htmlFor="90">
+          <input type="radio" name="time" id="90" value="90" defaultChecked />
+          90 seconds
+        </label>
+        <label htmlFor="180">
+          <input type="radio" name="time" id="180" value="180" />
+          180 seconds
+        </label>
+        </fieldset>
+        
+
+      
+        <div className="btnContainer">
+          <button
             type="submit"
             value="OK"
             className="okBtn"
             onClick={() => {}}
-          />
+          >OK</button>
         </div>
       </form>
     </div>
