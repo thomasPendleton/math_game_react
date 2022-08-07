@@ -1,4 +1,5 @@
 import React from 'react'
+import './GameDirection.style.css'
 
 const GameDirection = () => {
   return (
