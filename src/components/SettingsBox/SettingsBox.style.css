@@ -15,8 +15,8 @@
 }
 
 .settingsForm input {
-  box-shadow: inset 1px 1px 3px 0 rgba(189,191,192,0.90);
-  
+  box-shadow: inset 1px 1px 3px 0 rgba(189, 191, 192, 0.9);
+
   border-radius: 5px;
   font-size: 24px;
   margin: 20px 10px;
@@ -42,7 +42,6 @@
 
 .okBtn:hover {
   opacity: 0.8;
-  
 }
 
 .okBtn:active {
@@ -54,6 +53,6 @@
 .btnContainer {
   padding-top: 20px;
 }
-fieldset{
+fieldset {
   border: none;
 }
