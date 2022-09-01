@@ -3,12 +3,12 @@ import { GameContext } from "../../context/GameContext"
 import "./SettingsBox.style.css"
 
 const SettingsBox = () => {
-  const { setOperation, setPlayerName, playerName } = React.useContext(GameContext)
+  const {  setPlayerName, playerName, handleOperationChange } = React.useContext(GameContext)
   const [name, setName] = useState(playerName)
 
   const handlePlayerSumbit = (e) => {
     e.preventDefault()
-    console.log(name);
+    // console.log();
     if(name){
       setPlayerName(name)
     } else {
@@ -20,10 +20,10 @@ const SettingsBox = () => {
   //   setName(e.target.value)
   // }
 
-  const handleOperationChange = (e) => {
-    console.log(e.target.value)
-    setOperation(e.target.value)
-  }
+  // const handleOperationChange = (e) => {
+  //   console.log(e.target.value)
+  //   setOperation(e.target.value)
+  // }
 
   return (
     <div className="settingsBox">
@@ -47,12 +47,12 @@ const SettingsBox = () => {
           </label>
         </div>
         <fieldset onChange={(e) => handleOperationChange(e)}>
-          <label htmlFor="multiplcation">
+          <label htmlFor="multiplication">
             <input
               type="radio"
               name="math"
-              id="multiplcation"
-              value="mulitplcation"
+              id="multiplication"
+              value="multiplication"
               defaultChecked
             />
             Multiplcation

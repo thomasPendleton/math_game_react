@@ -12,6 +12,10 @@ const GameContextProvider = ({ children }) => {
   const [correctAnswer, setCorrectAnswer] = useState(0)
   const [answerSubmitted, setanswerSubmitted] = useState(true)
 
+  const handleOperationChange = (e) => {
+    console.log(e.target.value)
+    setOperation(e.target.value)
+  }
   
   function randomMath(x) {
     return Math.floor(Math.random() * 12) + 1
@@ -29,9 +33,12 @@ const GameContextProvider = ({ children }) => {
       num1 = num2
       num2 = x
     }
+    console.log(operation)
     if(operation === 'multiplication'){
+        console.log(operation);
         setCorrectAnswer(num1 * num2)
     } else if (operation === 'subtraction'){
+        console.log(operation)
         setCorrectAnswer(num1 - num2)
     }
   }, [answerSubmitted, operation])
@@ -50,7 +57,7 @@ const GameContextProvider = ({ children }) => {
 
   return (
     <GameContext.Provider
-      value={{ checkAnswer, setPlayerName, playerName, correct, wrong, firstNumber, secondNumber, operation, setOperation }}
+      value={{ checkAnswer, handleOperationChange, setPlayerName, playerName, correct, wrong, firstNumber, secondNumber, operation, setOperation }}
     >
       {children}
     </GameContext.Provider>
