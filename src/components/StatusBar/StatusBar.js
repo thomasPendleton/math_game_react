@@ -1,9 +1,10 @@
 import React from 'react'
 import './StatusBar.style.css'
 import { GameContext } from '../../context/GameContext'
+import CountDownTime from "../CountDownTimer/CountDownTime"
 
-const StatusBar = ({ handleTabChange }) => {
-  const {correct, wrong} = React.useContext(GameContext)
+const StatusBar = ({ handleTabChange, value }) => {
+  const { correct, wrong } = React.useContext(GameContext)
   return (
     <>
       <div className="header">
@@ -11,9 +12,14 @@ const StatusBar = ({ handleTabChange }) => {
           Play Now
         </div>
         <div>Correct: {correct}</div>
-        <div className="settings" onClick={() => handleTabChange(1)}>
-          Settings
-        </div>
+        {value === 2 ? (
+          <CountDownTime />
+        ) : (
+          <div className="settings" onClick={() => handleTabChange(1)}>
+            Settings
+          </div>
+        )}
+
         <div>Wrong: {wrong}</div>
         <div className="high_scores" onClick={() => handleTabChange(3)}>
           High Scores

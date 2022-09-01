@@ -1,11 +1,8 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState } from 'react'
 import StatusBar from './components/StatusBar/StatusBar.js'
 import GameBox from './components/GameBox/GameBox'
 
 function App() {
-  
-  
-  
   const [value, setValue] = useState(0)
 
   const handleTabChange = (index) => {
@@ -14,8 +11,7 @@ function App() {
 
   return (
     <div className="App">
-      <StatusBar handleTabChange={handleTabChange} />
-
+      <StatusBar handleTabChange={handleTabChange} value={value} />
       <GameBox value={value} />
     </div>
   )

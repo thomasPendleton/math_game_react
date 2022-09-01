@@ -11,12 +11,14 @@ const GameContextProvider = ({ children }) => {
   const [operation, setOperation] = useState('multiplication')
   const [correctAnswer, setCorrectAnswer] = useState(0)
   const [answerSubmitted, setanswerSubmitted] = useState(true)
+  const [gameTime, setGameTime] = useState(101)
+  const [gameOver, setGameOver] = useState(false)
 
   const handleOperationChange = (e) => {
     console.log(e.target.value)
     setOperation(e.target.value)
   }
-  
+
   function randomMath(x) {
     return Math.floor(Math.random() * 12) + 1
   }
@@ -33,31 +35,41 @@ const GameContextProvider = ({ children }) => {
       num1 = num2
       num2 = x
     }
-    console.log(operation)
-    if(operation === 'multiplication'){
-        console.log(operation);
-        setCorrectAnswer(num1 * num2)
-    } else if (operation === 'subtraction'){
-        console.log(operation)
-        setCorrectAnswer(num1 - num2)
+
+    if (operation === "multiplication") {
+      setCorrectAnswer(num1 * num2)
+    } else if (operation === "subtraction") {
+      setCorrectAnswer(num1 - num2)
     }
   }, [answerSubmitted, operation])
 
-  
-
   const checkAnswer = (value) => {
     setanswerSubmitted(!answerSubmitted)
-    console.log(correctAnswer, value);
-    if(correctAnswer === value){
-        setCorrect(prev => prev + 1)
+    console.log(correctAnswer, value)
+    if (correctAnswer === value) {
+      setCorrect((prev) => prev + 1)
     } else {
-        setWrong(prev => prev + 1)
+      setWrong((prev) => prev + 1)
     }
   }
 
   return (
     <GameContext.Provider
-      value={{ checkAnswer, handleOperationChange, setPlayerName, playerName, correct, wrong, firstNumber, secondNumber, operation, setOperation }}
+      value={{
+        checkAnswer,
+        handleOperationChange,
+        setPlayerName,
+        playerName,
+        correct,
+        wrong,
+        firstNumber,
+        secondNumber,
+        operation,
+        setOperation,
+        gameTime,
+        setGameTime,
+        setGameOver
+      }}
     >
       {children}
     </GameContext.Provider>

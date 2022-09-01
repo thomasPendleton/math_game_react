@@ -16,15 +16,6 @@ const SettingsBox = () => {
     }
   }
 
-  // const onNameChange = (e) => {
-  //   setName(e.target.value)
-  // }
-
-  // const handleOperationChange = (e) => {
-  //   console.log(e.target.value)
-  //   setOperation(e.target.value)
-  // }
-
   return (
     <div className="settingsBox">
       <h2>Settings</h2>

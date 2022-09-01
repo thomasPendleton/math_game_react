@@ -11,7 +11,8 @@
   .questionContainer {
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    margin-top: 20px;
+    /* justify-content: center; */
     align-items: center;
     /* background-color: aliceblue; */
     height: 100%;
