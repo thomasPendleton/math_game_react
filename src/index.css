@@ -21,59 +21,7 @@ body {
   margin-top: 20px;
 }
 
-/* _________________________________________________ */
-/* PLAY NOW */
-/* _________________________________________________ */
 
-
-
-.question h4 {
-  margin: 0px;
-}
-
-.questionContainer {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  /* background-color: aliceblue; */
-  height: 100%;
-  
-}
-
-.question {
-  /* display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center; */
-  text-align: right;
-  font-size: 5rem;
-}
-
-.secondNumber {
-  position: relative;
-  
-}
-.line {
-  background-color: black;
-  height: 2px;
-  width: 30%;
-  margin: 10px auto;
-}
-
-.operation {
-  font-size: 3rem;
-  position: absolute;
-  left: -38px;
-  bottom: 8px;
-}
-
-.answer {
-  width: 30%;
-  font-size: 5rem;
-  border-radius: 5px;
-  text-align: center;
-}
 
 /* _________________________________________________ */
 /* Game Directions */

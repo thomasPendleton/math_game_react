@@ -1,7 +1,9 @@
 import React from 'react'
 import './StatusBar.style.css'
+import { GameContext } from '../../context/GameContext'
 
-const StatusBar = ({ handleTabChange, correct, wrong }) => {
+const StatusBar = ({ handleTabChange }) => {
+  const {correct, wrong} = React.useContext(GameContext)
   return (
     <>
       <div className="header">
