@@ -3,10 +3,12 @@ import { GameContext } from "../../context/GameContext"
 import "./countDownTime.css"
 
 const CountDownTime = () => {
-  const { gameTime, setGameOver } = React.useContext(GameContext)
+  const { gameTime, setGameOver, gameOver } = React.useContext(GameContext)
   const [timeLeft, setTimeLeft] = useState(gameTime)
 
   useEffect(() => {
+    console.log("useEffect countdown")
+    console.log("time left ", timeLeft)
     let myInterval = setInterval(() => {
       if (timeLeft > 0) {
         setTimeLeft(timeLeft - 1)

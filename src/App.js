@@ -12,7 +12,7 @@ function App() {
   return (
     <div className="App">
       <StatusBar handleTabChange={handleTabChange} value={value} />
-      <GameBox value={value} />
+      <GameBox handleTabChange={handleTabChange} value={value} />
     </div>
   )
 }

@@ -1,12 +1,17 @@
-import React, { useState } from "react"
+import React, { useState, useRef, useEffect } from "react"
 import "./PlayNow.style.css"
 import { GameContext } from "../../context/GameContext.js"
-
+import GameComplete from "../GameComplete/GameComplete"
 
 const PlayNow = () => {
+  const inputRef = useRef()
   const [answerValue, setAnswerValue] = useState("")
-  const { checkAnswer, firstNumber, secondNumber, operation } =
+  const { checkAnswer, firstNumber, secondNumber, operation, gameOver } =
     React.useContext(GameContext)
+
+  useEffect(() => {
+    inputRef.current.focus()
+  }, [])
 
   const handleSubmit = (e) => {
     e.preventDefault()
@@ -17,7 +22,6 @@ const PlayNow = () => {
 
   return (
     <div className="questionContainer">
-    
       <section className="question">
         <h4 className="firstNumber">{firstNumber}</h4>
         <h4 className="secondNumber">
@@ -30,6 +34,7 @@ const PlayNow = () => {
       <div className="line"></div>
       <form className="answer-form" onSubmit={(e) => handleSubmit(e)}>
         <input
+          ref={inputRef}
           className="answer"
           max="145"
           type="number"

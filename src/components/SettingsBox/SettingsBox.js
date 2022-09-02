@@ -1,18 +1,23 @@
-import React, { useState } from 'react'
+import React, { useState, useRef, useEffect } from "react"
 import { GameContext } from "../../context/GameContext"
 import "./SettingsBox.style.css"
 
-const SettingsBox = () => {
-  const {  setPlayerName, playerName, handleOperationChange } = React.useContext(GameContext)
+const SettingsBox = ({handleTabChange}) => {
+  const { setPlayerName, playerName, setGameTime, setOperation } =
+    React.useContext(GameContext)
   const [name, setName] = useState(playerName)
+  const nameRef = useRef()
+  useEffect(() => {
+    nameRef.current.focus()
+  }, [])
 
   const handlePlayerSumbit = (e) => {
     e.preventDefault()
-    // console.log();
-    if(name){
+    if (name) {
       setPlayerName(name)
+      handleTabChange(0)
     } else {
-      alert('Please enter a name')
+      alert("Please enter a name")
     }
   }
 
@@ -28,6 +33,7 @@ const SettingsBox = () => {
           <label htmlFor="playerName">
             Player Name:
             <input
+              ref={nameRef}
               type="text"
               value={name}
               id="playerName"
@@ -37,7 +43,7 @@ const SettingsBox = () => {
             />
           </label>
         </div>
-        <fieldset onChange={(e) => handleOperationChange(e)}>
+        <fieldset onChange={(e) => setOperation(e.target.value)}>
           <label htmlFor="multiplication">
             <input
               type="radio"
@@ -49,17 +55,12 @@ const SettingsBox = () => {
             Multiplcation
           </label>
           <label htmlFor="subtract">
-            <input
-              type="radio"
-              name="math"
-              id="subtract"
-              value="subtraction"
-            />
+            <input type="radio" name="math" id="subtract" value="subtraction" />
             Subtract
           </label>
         </fieldset>
 
-        <fieldset>
+        <fieldset onChange={(e) => setGameTime(e.target.value)}>
           <label htmlFor="90">
             <input type="radio" name="time" id="90" value="90" defaultChecked />
             90 seconds
@@ -71,7 +72,7 @@ const SettingsBox = () => {
         </fieldset>
 
         <div className="btnContainer">
-          <button type="submit" value="OK" className="okBtn" onClick={() => {}}>
+          <button type="submit" value="OK" className="okBtn" >
             OK
           </button>
         </div>

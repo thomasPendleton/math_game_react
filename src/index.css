@@ -25,45 +25,6 @@ body {
 
 
 
-/* _________________________________________________ */
-/* Game Directions */
-/* _________________________________________________ */
-
-.gameBox {
-  border-radius: 20px;
-  background-color: rgb(250, 198, 164);
-  height: 500px;
-  max-width: 500px;
-  margin: 0 5px;
-  box-shadow: 1px 1px 3px 0 rgba(189,191,192,0.90);
-}
-
-.gameDirection {
-  text-align: center;
-}
-
-.gameDirection h2 {
-  font-size: 40px;
-  text-decoration: underline;
-  letter-spacing: 0.2rem;
-}
-
-.directionItems {
-  padding: 5px 50px;
-}
-.directionItems li {
-  padding: 20px 0;
-}
-
-/* _________________________________________________ */
-/*  */
-/* _________________________________________________ */
-
-
-
-
-
-
 
 /* _________________________________________________ */
 /* Input Spin button Delete */

@@ -11,13 +11,8 @@ const GameContextProvider = ({ children }) => {
   const [operation, setOperation] = useState('multiplication')
   const [correctAnswer, setCorrectAnswer] = useState(0)
   const [answerSubmitted, setanswerSubmitted] = useState(true)
-  const [gameTime, setGameTime] = useState(101)
+  const [gameTime, setGameTime] = useState(3)
   const [gameOver, setGameOver] = useState(false)
-
-  const handleOperationChange = (e) => {
-    console.log(e.target.value)
-    setOperation(e.target.value)
-  }
 
   function randomMath(x) {
     return Math.floor(Math.random() * 12) + 1
@@ -57,18 +52,20 @@ const GameContextProvider = ({ children }) => {
     <GameContext.Provider
       value={{
         checkAnswer,
-        handleOperationChange,
         setPlayerName,
         playerName,
         correct,
+        setCorrect,
         wrong,
+        setWrong,
         firstNumber,
         secondNumber,
         operation,
         setOperation,
         gameTime,
         setGameTime,
-        setGameOver
+        setGameOver,
+        gameOver,
       }}
     >
       {children}
