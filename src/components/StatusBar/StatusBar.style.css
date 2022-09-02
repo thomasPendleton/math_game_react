@@ -23,6 +23,9 @@
 .settings {
     cursor: pointer;
 }
-.play_now.disabled {
- 
+.disabled {
+    color: rgba(48, 48, 48, 0.845);
+  
+    filter: blur(1px);
+    cursor: default;
 }

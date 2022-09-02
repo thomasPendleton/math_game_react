@@ -13,11 +13,14 @@ const GameContextProvider = ({ children }) => {
   const [answerSubmitted, setanswerSubmitted] = useState(true)
   const [gameTime, setGameTime] = useState(90)
   const [gameOver, setGameOver] = useState(false)
+  const [playing, setPlaying] = useState(false)
 
-  function randomMath(x) {
-    return Math.floor(Math.random() * 12) + 1
-  }
   useEffect(() => {
+    function randomMath(x) {
+      const highestNumber = operation === "multiplication" ? 12 : 20
+      return Math.floor(Math.random() * highestNumber) + 1
+    }
+
     let num1 = randomMath()
     let num2 = randomMath()
     if (num1 > num2) {
@@ -66,6 +69,8 @@ const GameContextProvider = ({ children }) => {
         setGameTime,
         setGameOver,
         gameOver,
+        playing,
+        setPlaying,
       }}
     >
       {children}

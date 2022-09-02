@@ -3,7 +3,7 @@ import './StatusBar.style.css'
 import { GameContext } from '../../context/GameContext'
 import CountDownTime from "../CountDownTimer/CountDownTime"
 
-const StatusBar = ({ handleTabChange, value, playerName }) => {
+const StatusBar = ({ handleTabChange, value}) => {
   const {
     correct,
     wrong,
@@ -13,21 +13,28 @@ const StatusBar = ({ handleTabChange, value, playerName }) => {
     gameOver,
     setCorrect,
     setWrong,
+    playing,
+    setPlaying,
+    playerName,
   } = React.useContext(GameContext)
 
+  const handlePlaying = () => {
+    if (playerName) {
+      setCorrect(0)
+      setWrong(0)
+      handleTabChange(2)
+      setGameOver(false)
+      setGameTime(gameTime)
+      setPlaying(true)
+    }
+  }
+ 
   return (
     <>
       <div className="header">
-        
         <div
-          className={'play_now'}
-          onClick={() => {
-            setCorrect(0)
-            setWrong(0)
-            handleTabChange(2)
-            setGameOver(false)
-            setGameTime(gameTime)
-          }}
+          className={playing || !playerName ? "play_now disabled" : "play_now"}
+          onClick={handlePlaying}
         >
           Play Now
         </div>
@@ -42,7 +49,14 @@ const StatusBar = ({ handleTabChange, value, playerName }) => {
         )}
 
         <div>Wrong: {wrong}</div>
-        <div className="high_scores" onClick={() => handleTabChange(3)}>
+        <div
+          className={playing ? "high_scores disabled" : "high_scores"}
+          onClick={() => {
+            if (!playing) {
+              handleTabChange(3)
+            }
+          }}
+        >
           High Scores
         </div>
       </div>

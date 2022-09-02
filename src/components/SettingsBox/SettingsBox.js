@@ -61,13 +61,13 @@ const SettingsBox = ({handleTabChange}) => {
         </fieldset>
 
         <fieldset onChange={(e) => setGameTime(e.target.value)}>
-          <label htmlFor="90">
-            <input type="radio" name="time" id="90" value="90" defaultChecked />
-            90 seconds
+          <label htmlFor="45">
+            <input type="radio" name="time" id="45" value="45" defaultChecked />
+            45 seconds
           </label>
-          <label htmlFor="180">
-            <input type="radio" name="time" id="180" value="180" />
-            180 seconds
+          <label htmlFor="90">
+            <input type="radio" name="time" id="90" value="90" />
+            90 seconds
           </label>
         </fieldset>
 

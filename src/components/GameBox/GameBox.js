@@ -15,7 +15,6 @@ const GameBox = ({ value, handleTabChange }) => {
         {value === 1 && <SettingsBox handleTabChange={handleTabChange}/>}
         {value === 2 && gameOver && <GameComplete />}
         {value === 2 && !gameOver && <PlayNow />}
-
         {value === 3 && <HighScores />}
       </div>
     </div>
