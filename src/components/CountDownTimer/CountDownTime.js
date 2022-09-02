@@ -27,7 +27,7 @@ const CountDownTime = () => {
 
   return (
     <div className="time-display">
-      <h4>{timeLeft}</h4>
+      <p>{timeLeft}</p>
     </div>
   )
 }

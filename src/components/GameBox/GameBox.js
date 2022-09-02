@@ -1,4 +1,5 @@
 import React from 'react'
+import './GameBox.css'
 import GameComplete from "../GameComplete/GameComplete"
 import GameDirection from "../GameDirection/GameDirection"
 import SettingsBox from "../SettingsBox/SettingsBox"

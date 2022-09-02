@@ -8,11 +8,11 @@ const GameComplete = () => {
     const {correct, gameTime, playerName} = React.useContext(GameContext)
   return (
     <div className='gameComplete'>
-      <h1>Time is up!</h1>
+      <h2>Time is up!</h2>
       <h3>Good Job {playerName}!</h3>
       <h4>You got {correct} correct in {gameTime} s</h4>
-      <h4> Try again </h4>
-      {/* <button onClick={()=> console.log('hello')}>Try Again</button> */}
+      <h4> Try again  </h4>
+      
     </div>
   )
 }

@@ -19,7 +19,7 @@
   text-align: center;
   border-radius: 5px;
   font-size: 24px;
-  margin: 20px 10px;
+  margin: 10px 10px;
 }
 
 .settingsForm label {
@@ -43,7 +43,9 @@
 .okBtn:hover {
   opacity: 0.8;
 }
-
+.playerName input {
+  max-width: 100%;
+}
 .okBtn:active {
   transition: box-shadow 0.1s;
   transform: translateY(4px);
@@ -55,4 +57,29 @@
 }
 fieldset {
   border: none;
+}
+
+@media only screen and (max-width: 450px ) {
+  
+  .settingsBox h2 {
+   font-size: 2.4rem;
+  }
+  .settingsBox label{
+    font-size: 1.4rem;
+  }
+  .settingsBox h2 {
+    margin-top: 5px;
+  }
+  .playerName input{
+    margin-bottom: 0;
+    margin: 0;
+  }
+  div.btnContainer{
+    margin-top: 0;
+    padding-top: 12px;
+  }
+  #playerName{
+    margin-top: 5px;
+  }
+  
 }

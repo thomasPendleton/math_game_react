@@ -1,5 +1,6 @@
 import React from 'react'
 import './StatusBar.style.css'
+import { FiSettings } from 'react-icons/fi'
 import { GameContext } from '../../context/GameContext'
 import CountDownTime from "../CountDownTimer/CountDownTime"
 
@@ -31,7 +32,7 @@ const StatusBar = ({ handleTabChange, value}) => {
  
   return (
     <>
-      <div className="header">
+      <header className="header">
         <div
           className={playing || !playerName ? "play_now disabled" : "play_now"}
           onClick={handlePlaying}
@@ -44,7 +45,10 @@ const StatusBar = ({ handleTabChange, value}) => {
           <CountDownTime />
         ) : (
           <div className="settings" onClick={() => handleTabChange(1)}>
-            Settings
+            <div className='settingsText'>
+              Settings
+            </div>
+            <FiSettings className='settingsIcon' />
           </div>
         )}
 
@@ -59,7 +63,7 @@ const StatusBar = ({ handleTabChange, value}) => {
         >
           High Scores
         </div>
-      </div>
+      </header>
     </>
   )
 }

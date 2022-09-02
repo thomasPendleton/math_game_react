@@ -54,9 +54,10 @@ const SettingsBox = ({handleTabChange}) => {
             />
             Multiplcation
           </label>
+          <br />
           <label htmlFor="subtract">
             <input type="radio" name="math" id="subtract" value="subtraction" />
-            Subtract
+             Subtraction  
           </label>
         </fieldset>
 
@@ -65,6 +66,7 @@ const SettingsBox = ({handleTabChange}) => {
             <input type="radio" name="time" id="45" value="45" defaultChecked />
             45 seconds
           </label>
+          <br />
           <label htmlFor="90">
             <input type="radio" name="time" id="90" value="90" />
             90 seconds
