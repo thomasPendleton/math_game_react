@@ -11,7 +11,7 @@ const GameContextProvider = ({ children }) => {
   const [operation, setOperation] = useState('multiplication')
   const [correctAnswer, setCorrectAnswer] = useState(0)
   const [answerSubmitted, setanswerSubmitted] = useState(true)
-  const [gameTime, setGameTime] = useState(3)
+  const [gameTime, setGameTime] = useState(90)
   const [gameOver, setGameOver] = useState(false)
 
   function randomMath(x) {
