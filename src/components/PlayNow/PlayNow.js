@@ -29,7 +29,7 @@ const PlayNow = () => {
         <h4 className="firstNumber">{firstNumber}</h4>
         <h4 className="secondNumber">
           <span className="operation">
-            {operation === "multiplication" ? "X" : "-"}
+            {operation === "multiplication" ? "x" : "-"}
           </span>
           {secondNumber}
         </h4>
