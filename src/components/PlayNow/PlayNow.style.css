@@ -10,7 +10,6 @@
     display: flex;
     flex-direction: column;
     margin-top: 20px;
-    /* justify-content: center; */
     align-items: center;
     height: 100%;
     
@@ -44,9 +43,44 @@
   }
   
   .answer {
-    font-family: 'Courier New', Courier, monospace;
+    /* font-family: 'Courier New', Courier, monospace; */
     width: 30%;
     font-size: 5rem;
     border-radius: 5px;
     text-align: center;
   }
+/* ______________Media Queries_______________ */
+
+@media only screen and (max-width: 680px) {}
+
+@media only screen and (max-width: 450px) {
+ 
+  .questionContainer{
+    flex-direction: row;
+    align-items: flex-start;
+    margin: 10px;
+  }
+  .question {
+    display: flex;
+    flex-direction: row;
+    font-size: 3.5rem;
+  }
+  .operation{
+    position:static;
+    margin: 0 20px 5px;
+  }
+  .operation{
+    font-size: 2rem;
+  }
+  .line{
+    display: none;
+  }
+  .answer-form{
+    margin-top: 9px;
+  }
+  .answer{
+    font-size: 3.0rem;
+   
+    width: 90%;
+  }
+}

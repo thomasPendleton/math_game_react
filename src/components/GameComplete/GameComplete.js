@@ -10,7 +10,8 @@ const GameComplete = () => {
     <div className='gameComplete'>
       <h2>Time is up!</h2>
       <h3>Good Job {playerName}!</h3>
-      <h4>You got {correct} correct in {gameTime} s</h4>
+      <h4>You got {correct} correct<br/> in {gameTime}s</h4>
+      <h4></h4>
       <h4> Try again  </h4>
       
     </div>

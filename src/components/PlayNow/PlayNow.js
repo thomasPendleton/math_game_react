@@ -30,6 +30,7 @@ const PlayNow = () => {
           </span>
           {secondNumber}
         </h4>
+        <h4>=</h4>
       </section>
       <div className="line"></div>
       <form className="answer-form" onSubmit={(e) => handleSubmit(e)}>
