@@ -9,7 +9,7 @@
   .questionContainer {
     display: flex;
     flex-direction: column;
-    margin-top: 20px;
+    margin-top: 40px;
     align-items: center;
     height: 100%;
     
@@ -29,6 +29,9 @@
     height: 2px;
     width: 30%;
     margin: 10px auto;
+  }
+  .equals{
+    display: none;
   }
   
   .operation {
@@ -58,7 +61,7 @@
   .questionContainer{
     flex-direction: row;
     align-items: flex-start;
-    margin: 10px;
+    margin: 30px 10px 10px;
   }
   .question {
     display: flex;
@@ -66,21 +69,24 @@
     font-size: 3.5rem;
   }
   .operation{
-    position:static;
-    margin: 0 20px 5px;
+    font-size: 3rem;
+    position: relative;
+    left: 0;
+    top: -5px;
+    margin: 10px 10px 10px;
   }
-  .operation{
-    font-size: 2rem;
-  }
+  
   .line{
     display: none;
+  }
+  .equals{
+    display: block;
   }
   .answer-form{
     margin-top: 9px;
   }
   .answer{
     font-size: 3.0rem;
-   
     width: 90%;
   }
 }

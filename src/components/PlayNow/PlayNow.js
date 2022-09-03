@@ -2,6 +2,9 @@ import React, { useState, useRef, useEffect } from "react"
 import "./PlayNow.style.css"
 import { GameContext } from "../../context/GameContext.js"
 import GameComplete from "../GameComplete/GameComplete"
+import { GrFormSubtract } from 'react-icons/gr';
+
+
 
 const PlayNow = () => {
   const inputRef = useRef()
@@ -30,7 +33,7 @@ const PlayNow = () => {
           </span>
           {secondNumber}
         </h4>
-        <h4>=</h4>
+        <h4 className="equals">=</h4>
       </section>
       <div className="line"></div>
       <form className="answer-form" onSubmit={(e) => handleSubmit(e)}>
