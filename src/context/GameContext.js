@@ -11,7 +11,7 @@ const GameContextProvider = ({ children }) => {
   const [operation, setOperation] = useState('multiplication')
   const [correctAnswer, setCorrectAnswer] = useState(0)
   const [answerSubmitted, setanswerSubmitted] = useState(true)
-  const [gameTime, setGameTime] = useState(180)
+  const [gameTime, setGameTime] = useState(90)
   const [gameOver, setGameOver] = useState(false)
   const [playing, setPlaying] = useState(false)
 
