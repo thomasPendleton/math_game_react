@@ -61,12 +61,13 @@
   .questionContainer{
     flex-direction: row;
     align-items: flex-start;
-    margin: 30px 10px 10px;
+    margin: 30px 10px 30px;
   }
   .question {
     display: flex;
     flex-direction: row;
     font-size: 3.5rem;
+
   }
   .operation{
     font-size: 3rem;

@@ -1,9 +1,9 @@
 .gameBox {
     border-radius: 20px;
     background-color: rgb(250, 198, 164);
-    height: 500px;
+    max-height: 500px;
     width: 100%;
-    max-width: 500px;
-    /* margin: 0 5px; */
+    max-width: 500px; 
     box-shadow: 1px 1px 3px 0 rgba(189, 191, 192, 0.9);
+    /* margin: 0 5px; */
   }
