@@ -8,7 +8,7 @@ const GameDirection = () => {
       <ol className="directionItems">
         <li>
           Click on settings button at top to change player name, time, and math
-          questions.
+          questions. Click the OK button.
         </li>
         <li>When Ready, click the Play Now button at top left.</li>
         <li>
