@@ -13,7 +13,7 @@ const GameDirection = () => {
         <li>When Ready, click the Play Now button at top left.</li>
         <li>
           Your score will increment and give you a total score of the correct
-          answers minus the wrong answers.
+          answers.
         </li>
         <li>
           You can see how well you have done by clicking the high scores button
