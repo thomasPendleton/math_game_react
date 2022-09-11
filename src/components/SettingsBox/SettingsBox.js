@@ -2,7 +2,6 @@ import React, { useState, useRef, useEffect } from "react"
 import styled from "styled-components"
 import { GameContext } from "../../context/GameContext"
 
-import "./SettingsBox.style.css"
 
 const SettingsBox = ({ handleTabChange }) => {
   const { setPlayerName, playerName, setGameTime, setOperation } =
