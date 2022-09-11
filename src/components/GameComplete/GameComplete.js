@@ -1,21 +1,30 @@
 import React from 'react'
-import './GameComplete.css'
-import { GameContext } from '../../context/GameContext'
-
-
+import styled from "styled-components"
+import { GameContext } from "../../context/GameContext"
 
 const GameComplete = () => {
-    const {correct, gameTime, playerName} = React.useContext(GameContext)
+  const { correct, gameTime, playerName } = React.useContext(GameContext)
   return (
-    <div className='gameComplete'>
+    <Wrapper>
       <h2>Time is up!</h2>
       <h3>Good Job {playerName}!</h3>
-      <h4>You got {correct} correct<br/> in {gameTime}s</h4>
-      <h4></h4>
-      <h4> Try again  </h4>
-      
-    </div>
+      <h4>
+        You got {correct} correct
+        <br /> in {gameTime}s
+      </h4>
+    
+      <h4> Try again </h4>
+    </Wrapper>
   )
 }
+
+const Wrapper = styled.div`
+  text-align: center;
+  font-size: 30px;
+  color: rgb(17, 23, 23);
+  h2 {
+    width: 100%;
+  }
+`
 
 export default GameComplete

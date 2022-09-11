@@ -1,9 +1,9 @@
 import React from 'react'
-import './GameDirection.style.css'
+import styled from "styled-components"
 
 const GameDirection = () => {
   return (
-    <div className="gameDirection">
+    <Wrapper className="gameDirection">
       <h2>Directions</h2>
       <ol className="directionItems">
         <li>
@@ -20,8 +20,34 @@ const GameDirection = () => {
           at the top right.
         </li>
       </ol>
-    </div>
+    </Wrapper>
   )
 }
+
+const Wrapper = styled.div`
+  text-align: center;
+  h2 {
+    font-size: 40px;
+    text-decoration: underline;
+    letter-spacing: 0.2rem;
+    margin-bottom: 20px;
+  }
+  .directionItems {
+    padding: 0 50px;
+    margin: 0 0 20px;
+    li {
+      padding: 20px 0;
+    }
+  }
+
+  @media only screen and (max-width: 680px) {
+    h2 {
+      margin-bottom: 0px;
+    }
+    .directionItems {
+      margin-top: 5px;
+    }
+  }
+`
 
 export default GameDirection
