@@ -1,10 +1,7 @@
 import React, { useState, useRef, useEffect } from "react"
+import styled from "styled-components"
 import "./PlayNow.style.css"
 import { GameContext } from "../../context/GameContext.js"
-import GameComplete from "../GameComplete/GameComplete"
-import { GrFormSubtract } from 'react-icons/gr';
-
-
 
 const PlayNow = () => {
   const inputRef = useRef()
@@ -24,12 +21,16 @@ const PlayNow = () => {
   }
 
   return (
-    <div className="questionContainer">
+    <Wrapper className="questionContainer">
       <section className="question">
         <h4 className="firstNumber">{firstNumber}</h4>
         <h4 className="secondNumber">
           <span className="operation">
-            {operation === "multiplication" ? "x" : "-"}
+            {operation === "multiplication" ? (
+              <span>&#10006;</span>
+            ) : (
+              <span>&minus;</span>
+            )}
           </span>
           {secondNumber}
         </h4>
@@ -46,8 +47,16 @@ const PlayNow = () => {
           onChange={(e) => setAnswerValue(e.target.value)}
         />
       </form>
-    </div>
+    </Wrapper>
   )
 }
+
+const Wrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  margin: 40px;
+  align-items: center;
+  height: 100%;
+`
 
 export default PlayNow

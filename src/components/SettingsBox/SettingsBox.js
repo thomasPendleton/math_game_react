@@ -23,7 +23,7 @@ const SettingsBox = ({ handleTabChange }) => {
   }
 
   return (
-    <Wrapper className="settingsBox">
+    <Wrapper>
       <h2>Settings</h2>
       <form
         action="submit"
