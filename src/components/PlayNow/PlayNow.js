@@ -1,12 +1,11 @@
 import React, { useState, useRef, useEffect } from "react"
 import styled from "styled-components"
-import "./PlayNow.style.css"
 import { GameContext } from "../../context/GameContext.js"
 
 const PlayNow = () => {
   const inputRef = useRef()
   const [answerValue, setAnswerValue] = useState("")
-  const { checkAnswer, firstNumber, secondNumber, operation, gameOver } =
+  const { checkAnswer, firstNumber, secondNumber, operation } =
     React.useContext(GameContext)
 
   useEffect(() => {
@@ -15,7 +14,6 @@ const PlayNow = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault()
-
     checkAnswer(+answerValue)
     setAnswerValue("")
   }
@@ -57,6 +55,75 @@ const Wrapper = styled.div`
   margin: 40px;
   align-items: center;
   height: 100%;
+  h4 {
+    margin: 0px;
+  }
+  .question {
+    text-align: right;
+    font-size: 5rem;
+  }
+  .secondNumber {
+    position: relative;
+  }
+  .line {
+    background-color: black;
+    height: 2px;
+    width: 30%;
+    margin: 10px auto;
+  }
+  .equals {
+    display: none;
+  }
+
+  .operation {
+    font-size: 2.7rem;
+    position: absolute;
+    left: -45px;
+    bottom: 10px;
+  }
+  .answer-form {
+    text-align: center;
+  }
+
+  .answer {
+    width: 30%;
+    font-size: 5rem;
+    border-radius: 5px;
+    text-align: center;
+  }
+  @media only screen and (max-width: 680px) {
+  }
+
+  @media only screen and (max-width: 450px) {
+    flex-direction: row;
+    align-items: flex-start;
+    margin: 30px 10px 30px;
+    .question {
+      display: flex;
+      flex-direction: row;
+      font-size: 3.5rem;
+    }
+    .operation {
+      font-size: 3rem;
+      position: relative;
+      left: 3px;
+      top: -4px;
+      margin: 10px 10px 10px;
+    }
+    .line {
+      display: none;
+    }
+    .equals {
+      display: block;
+    }
+    .answer-form {
+      /* margin-top: 9px; */
+    }
+    .answer {
+      font-size: 3rem;
+      width: 90%;
+    }
+  }
 `
 
 export default PlayNow

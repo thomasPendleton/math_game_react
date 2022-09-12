@@ -1,10 +1,10 @@
 import React from 'react'
-import './StatusBar.style.css'
-import { FiSettings } from 'react-icons/fi'
-import { GameContext } from '../../context/GameContext'
+import styled from "styled-components"
+import { FiSettings } from "react-icons/fi"
+import { GameContext } from "../../context/GameContext"
 import CountDownTime from "../CountDownTimer/CountDownTime"
 
-const StatusBar = ({ handleTabChange, value}) => {
+const StatusBar = ({ handleTabChange, value }) => {
   const {
     correct,
     wrong,
@@ -29,10 +29,10 @@ const StatusBar = ({ handleTabChange, value}) => {
       setPlaying(true)
     }
   }
- 
+
   return (
     <>
-      <header className="header">
+      <Wrapper className="header">
         <div
           className={playing || !playerName ? "play_now disabled" : "play_now"}
           onClick={handlePlaying}
@@ -45,10 +45,8 @@ const StatusBar = ({ handleTabChange, value}) => {
           <CountDownTime />
         ) : (
           <div className="settings" onClick={() => handleTabChange(1)}>
-            <div className='settingsText'>
-              Settings
-            </div>
-            <FiSettings className='settingsIcon' />
+            <div className="settingsText">Settings</div>
+            <FiSettings className="settingsIcon" />
           </div>
         )}
 
@@ -63,9 +61,67 @@ const StatusBar = ({ handleTabChange, value}) => {
         >
           High Scores
         </div>
-      </header>
+      </Wrapper>
     </>
   )
 }
+
+const Wrapper = styled.header`
+  background-color: orangered;
+  display: flex;
+  justify-content: space-around;
+  padding: 40px 5px;
+  border-bottom: 2px solid black;
+  font-size: 24px;
+  div {
+    padding: 0 5px;
+  }
+  .play_now {
+    cursor: pointer;
+    border-radius: 5px;
+  }
+
+  .high_scores {
+    cursor: pointer;
+  }
+
+  .settings {
+    cursor: pointer;
+    padding: 0;
+  }
+  .settingsIcon {
+    display: none;
+  }
+  .disabled {
+    color: rgba(48, 48, 48, 0.845);
+    filter: blur(1px);
+    cursor: default;
+  }
+  @media only screen and (max-width: 680px) {
+    font-size: 1.1rem;
+    font-weight: 500;
+    padding: 20px 0 20px;
+    text-align: center;
+
+    .settings .settingsIcon {
+      display: block;
+      margin-top: 5px;
+      transition: transform 1s ease;
+    }
+    .settingsText {
+      display: none;
+    }
+    .settings .settingsIcon:hover {
+      transform: rotate(180deg);
+    }
+  }
+
+  @media only screen and (max-width: 450px) {
+    .settings .settingsIcon {
+      display: block;
+      margin-top: 5px;
+    }
+  }
+`
 
 export default StatusBar
