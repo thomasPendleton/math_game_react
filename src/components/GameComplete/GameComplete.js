@@ -10,10 +10,10 @@ const GameComplete = () => {
       <h3>Good Job {playerName}!</h3>
       <h4>
         You got {correct} correct
-        <br /> in {gameTime}s
+        <br /> in {gameTime} seconds
       </h4>
     
-      <h4> Try again </h4>
+      <h4> Press Play Now to try again </h4>
     </Wrapper>
   )
 }

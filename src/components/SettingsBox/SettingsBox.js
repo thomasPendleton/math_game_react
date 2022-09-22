@@ -4,8 +4,12 @@ import { GameContext } from "../../context/GameContext"
 
 
 const SettingsBox = ({ handleTabChange }) => {
-  const { setPlayerName, playerName, setGameTime, setOperation } =
-    React.useContext(GameContext)
+  const {
+    playerName,
+    setGameTime,
+    setOperationReducer,
+    setPlayerNameReducer,
+  } = React.useContext(GameContext)
   const [name, setName] = useState(playerName)
   const nameRef = useRef()
   useEffect(() => {
@@ -15,7 +19,7 @@ const SettingsBox = ({ handleTabChange }) => {
   const handlePlayerSumbit = (e) => {
     e.preventDefault()
     if (name) {
-      setPlayerName(name)
+      setPlayerNameReducer(name)
       handleTabChange(0)
     } else {
       alert("Please enter a name")
@@ -44,7 +48,7 @@ const SettingsBox = ({ handleTabChange }) => {
             />
           </label>
         </div>
-        <fieldset onChange={(e) => setOperation(e.target.value)}>
+        <fieldset onChange={(e) => setOperationReducer(e.target.value)}>
           <label htmlFor="multiplication">
             <input
               type="radio"
