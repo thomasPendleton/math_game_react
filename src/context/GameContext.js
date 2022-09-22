@@ -27,24 +27,31 @@ const GameContextProvider = ({ children }) => {
   const [secondNumber, setSecondNumber] = useState(0)
   const [correctAnswer, setCorrectAnswer] = useState(0)
   const [answerSubmitted, setanswerSubmitted] = useState(true)
+  //change gameOver back to false
   const [gameOver, setGameOver] = useState(false)
   const [playing, setPlaying] = useState(false)
 
   const [state, dispatch] = useReducer(reducer, initialState)
 
   useEffect(() => {
-    if (gameOver) {
-      const scores = JSON.parse(localStorage.getItem('scores') || '[]')
+    if (gameOver && state.playerName) {
+      let scores = JSON.parse(localStorage.getItem('scores') || '[]')
+      // scores = (scores.filter((item) => item.playerName !== ''))
+      scores = (scores.filter((item) => item.gameTime > 30))
+      
       const newHighScore = {playerName: state.playerName, operation: state.operation, correct, gameTime}
-      console.log(scores.find(item => state.playerName === item.playerName ))
+      // console.log(scores.find(item => state.playerName === item.playerName ))
      
-      if(scores.find(item => state.playerName === item.playerName)){
-        console.log('found');
-
-      } else {
+      if(scores.find(item => state.playerName === item.playerName && state.operation === item.operation && correct > item.correct)){
+        // console.log('same name and operation and higher correct')
         scores.push(newHighScore)
-
+      } 
+      if(!scores.find(item => state.playerName === item.playerName)){
+        // console.log('new player')
+        scores.push(newHighScore)
       }
+      
+      
 
       localStorage.setItem(
         "scores",
@@ -53,6 +60,8 @@ const GameContextProvider = ({ children }) => {
     }
     dispatch({type: 'SET_HIGH_SCORES', payload: getLocalStorage()})
   }, [gameOver])
+
+
 
   const setPlayerNameReducer = (name) => {
     dispatch({ type: "SET_PLAYER_NAME", payload: name })

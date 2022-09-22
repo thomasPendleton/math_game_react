@@ -14,7 +14,6 @@ const HighScores = () => {
           return item.operation === operation
         })
         .filter((item, idx) => {
-          // console.log(idx)
           return idx < 7
         })
     )
@@ -22,6 +21,7 @@ const HighScores = () => {
 
   useEffect(() => {
     const filteredScores = highScores.filter((item) => {
+      // redundant filter here. was used for additional logic that was removed.
       return item
     }).filter((item, idx) => {
       return idx < 7
@@ -71,8 +71,7 @@ const HighScores = () => {
 const Wrapper = styled.div`
   text-align: center;
   font-size: 26px;
-  /* Remove min width later when data is added */
-  /* min-width: 350px; */
+  min-height: 430px;
   h2 {
     margin-bottom: 10px;
     text-transform: uppercase;
@@ -94,7 +93,7 @@ const Wrapper = styled.div`
   }
   .btn-container {
     .okBtn {
-      margin: 0 5px;
+      margin: 1px 5px;
       cursor: pointer;
       padding: 5px 10px;
       border-radius: 5px;
@@ -109,9 +108,9 @@ const Wrapper = styled.div`
         opacity: 0.8;
       }
       &:active {
-        transition: box-shadow 0.1s;
-        transform: translateY(4px);
-        box-shadow: 1px 1px 10px rgba(0, 0, 0, 0.3);
+        transition: box-shadow 0.2s;
+        /* transform: translateY(1px); */
+        box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.3);
       }
     }
   }

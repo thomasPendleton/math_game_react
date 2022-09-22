@@ -42,6 +42,7 @@ const SettingsBox = ({ handleTabChange }) => {
               type="text"
               value={name}
               id="playerName"
+              maxLength="10"
               onChange={(e) => {
                 setName(e.target.value)
               }}
@@ -57,7 +58,7 @@ const SettingsBox = ({ handleTabChange }) => {
               value="multiplication"
               defaultChecked
             />
-            Multiplcation
+            Multiplication
           </label>
           <br />
           <label htmlFor="subtract">
