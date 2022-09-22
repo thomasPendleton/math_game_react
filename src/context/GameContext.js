@@ -20,7 +20,7 @@ const initialState = {
 const GameContextProvider = ({ children }) => {
   // const [playerName, setPlayerName] = useState('')
   // const [operation, setOperation] = useState('multiplication')
-  const [gameTime, setGameTime] = useState(10)
+  const [gameTime, setGameTime] = useState(45)
   const [correct, setCorrect] = useState(0)
   const [wrong, setWrong] = useState(0)
   const [firstNumber, setFirstNumber] = useState(0)
@@ -40,7 +40,7 @@ const GameContextProvider = ({ children }) => {
      
       if(scores.find(item => state.playerName === item.playerName)){
         console.log('found');
-        
+
       } else {
         scores.push(newHighScore)
 
