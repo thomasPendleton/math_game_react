@@ -18,8 +18,6 @@ const initialState = {
 }
 
 const GameContextProvider = ({ children }) => {
-  // const [playerName, setPlayerName] = useState('')
-  // const [operation, setOperation] = useState('multiplication')
   const [gameTime, setGameTime] = useState(45)
   const [correct, setCorrect] = useState(0)
   const [wrong, setWrong] = useState(0)
@@ -35,33 +33,38 @@ const GameContextProvider = ({ children }) => {
 
   useEffect(() => {
     if (gameOver && state.playerName) {
-      let scores = JSON.parse(localStorage.getItem('scores') || '[]')
+      let scores = JSON.parse(localStorage.getItem("scores") || "[]")
+      // the next two filters are used during testing only.
       // scores = (scores.filter((item) => item.playerName !== ''))
-      scores = (scores.filter((item) => item.gameTime > 30))
-      
-      const newHighScore = {playerName: state.playerName, operation: state.operation, correct, gameTime}
-      // console.log(scores.find(item => state.playerName === item.playerName ))
-     
-      if(scores.find(item => state.playerName === item.playerName && state.operation === item.operation && correct > item.correct)){
+      // scores = (scores.filter((item) => item.gameTime > 30))
+
+      const newHighScore = {
+        playerName: state.playerName,
+        operation: state.operation,
+        correct,
+        gameTime,
+      }
+
+      if (
+        scores.find(
+          (item) =>
+            state.playerName === item.playerName &&
+            state.operation === item.operation &&
+            correct > item.correct
+        )
+      ) {
         // console.log('same name and operation and higher correct')
         scores.push(newHighScore)
-      } 
-      if(!scores.find(item => state.playerName === item.playerName)){
+      }
+      if (!scores.find((item) => state.playerName === item.playerName)) {
         // console.log('new player')
         scores.push(newHighScore)
       }
-      
-      
 
-      localStorage.setItem(
-        "scores",
-        JSON.stringify(scores)
-      )
+      localStorage.setItem("scores", JSON.stringify(scores))
     }
-    dispatch({type: 'SET_HIGH_SCORES', payload: getLocalStorage()})
+    dispatch({ type: "SET_HIGH_SCORES", payload: getLocalStorage() })
   }, [gameOver])
-
-
 
   const setPlayerNameReducer = (name) => {
     dispatch({ type: "SET_PLAYER_NAME", payload: name })
@@ -69,7 +72,6 @@ const GameContextProvider = ({ children }) => {
   const setOperationReducer = (operation) => {
     dispatch({ type: "SET_OPERATION", payload: operation })
   }
-
 
   useEffect(() => {
     function randomMath(x) {
@@ -112,10 +114,6 @@ const GameContextProvider = ({ children }) => {
       value={{
         ...state,
         checkAnswer,
-        // setPlayerName,
-        // playerName,
-        // operation,
-        // setOperation,
         correct,
         setCorrect,
         wrong,
