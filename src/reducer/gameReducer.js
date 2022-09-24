@@ -19,11 +19,13 @@ function reducer (state, action){
         return {...state, highScores: sortedPayload}
     }
 
+
+    //change to new action type
     if(action.type === 'SET_OPERATION'){
         // console.log(action.payload)
         return {...state, operation: action.payload }
     }
-    
+
 }
 
 
