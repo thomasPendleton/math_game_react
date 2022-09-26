@@ -15,6 +15,8 @@ const initialState = {
   playerName: "",
   operation: "multiplication",
   highScores: getLocalStorage(),
+  gameTime: 45,
+  
 }
 
 const GameContextProvider = ({ children }) => {
@@ -101,7 +103,6 @@ const GameContextProvider = ({ children }) => {
 
   const checkAnswer = (value) => {
     setanswerSubmitted(!answerSubmitted)
-    // console.log(correctAnswer)
     if (correctAnswer === value) {
       setCorrect((prev) => prev + 1)
     } else {
