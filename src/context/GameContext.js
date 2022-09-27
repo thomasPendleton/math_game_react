@@ -16,7 +16,7 @@ const initialState = {
   operation: "multiplication",
   highScores: getLocalStorage(),
   gameTime: 45,
-  
+
 }
 
 const GameContextProvider = ({ children }) => {
@@ -74,6 +74,9 @@ const GameContextProvider = ({ children }) => {
   const setOperationReducer = (operation) => {
     dispatch({ type: "SET_OPERATION", payload: operation })
   }
+  const setGameTimeReducer = (time) => {
+    dispatch({ type: "SET_GAMETIME", payload: time })
+  }
 
   useEffect(() => {
     function randomMath(x) {
@@ -129,6 +132,7 @@ const GameContextProvider = ({ children }) => {
         setPlaying,
         setPlayerNameReducer,
         setOperationReducer,
+        setGameTimeReducer,
       }}
     >
       {children}

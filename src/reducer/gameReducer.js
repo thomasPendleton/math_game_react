@@ -21,9 +21,9 @@ function reducer (state, action){
 
 
     //change to new action type
-    if(action.type === 'SET_OPERATION'){
+    if(action.type === 'SET_GAMETIME'){
         // console.log(action.payload)
-        return {...state, operation: action.payload }
+        return {...state, gameTime: action.payload }
     }
 
 }
