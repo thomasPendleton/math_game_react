@@ -13,14 +13,14 @@ const getLocalStorage = () => {
 
 const initialState = {
   playerName: "",
-  operation: "multiplication",
+  operation: "",
   highScores: getLocalStorage(),
   gameTime: 45,
 
 }
 
 const GameContextProvider = ({ children }) => {
-  const [gameTime, setGameTime] = useState(45)
+  const [gameTime, setGameTime] = useState(null)
   const [correct, setCorrect] = useState(0)
   const [wrong, setWrong] = useState(0)
   const [firstNumber, setFirstNumber] = useState(0)

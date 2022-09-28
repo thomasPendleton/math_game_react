@@ -8,21 +8,29 @@ const SettingsBox = ({ handleTabChange }) => {
     playerName,
     setGameTime,
     setOperationReducer,
+    operation,
     setPlayerNameReducer,
+    gameTime,
   } = React.useContext(GameContext)
   const [name, setName] = useState(playerName)
   const nameRef = useRef()
   useEffect(() => {
     nameRef.current.focus()
+    console.log(!operation);
+    console.log(operation);
   }, [])
 
   const handlePlayerSumbit = (e) => {
     e.preventDefault()
-    if (name) {
+    if (name && gameTime && operation) {
       setPlayerNameReducer(name)
       handleTabChange(0)
-    } else {
+    } else if (name === "") {
       alert("Please enter a name")
+    } else if (operation === '') {
+      alert("Please enter an operation")
+    } else if (gameTime === null) {
+      alert("Please enter a game time")
     }
   }
 
@@ -56,7 +64,7 @@ const SettingsBox = ({ handleTabChange }) => {
               name="math"
               id="multiplication"
               value="multiplication"
-              defaultChecked
+              // defaultChecked
             />
             Multiplication
           </label>
@@ -69,7 +77,7 @@ const SettingsBox = ({ handleTabChange }) => {
 
         <fieldset onChange={(e) => setGameTime(e.target.value)}>
           <label htmlFor="45">
-            <input type="radio" name="time" id="45" value="45" defaultChecked />
+            <input type="radio" name="time" id="45" value="45" />
             45 seconds
           </label>
           <br />
