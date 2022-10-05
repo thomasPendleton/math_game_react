@@ -98,6 +98,7 @@ const SettingsBox = ({ handleTabChange }) => {
 }
 
 const Wrapper = styled.div`
+  accent-color: rgb(252, 87, 26);
   text-align: center;
   font-size: 30px;
   margin-bottom: 20px;
