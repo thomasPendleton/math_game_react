@@ -1,6 +1,7 @@
 import React, { useState, useRef, useEffect } from "react"
 import styled from "styled-components"
 import { GameContext } from "../../context/GameContext"
+import { toast } from 'react-toastify';
 
 
 const SettingsBox = ({ handleTabChange }) => {
@@ -26,11 +27,11 @@ const SettingsBox = ({ handleTabChange }) => {
       setPlayerNameReducer(name)
       handleTabChange(0)
     } else if (name === "") {
-      alert("Please enter a name")
+      toast.error("Please enter a name")
     } else if (operation === '') {
-      alert("Please enter an operation")
+      toast.error("Please enter an operation")
     } else if (gameTime === null) {
-      alert("Please enter a game time")
+      toast.error("Please enter a game time")
     }
   }
 

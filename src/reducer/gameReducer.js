@@ -25,7 +25,8 @@ function reducer (state, action){
         // console.log(action.payload)
         return {...state, gameTime: action.payload }
     }
-
+    
+    return {...state}
 }
 
 
