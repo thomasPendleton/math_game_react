@@ -1,8 +1,8 @@
 import React from 'react'
 import styled from "styled-components"
-import { GameContext } from "../../context/GameContext"
+import { GameContext } from "../context/GameContext"
 
-const GameComplete = () => {
+const GameComplete = ({handleTabChange}) => {
   const { correct, gameTime, playerName } = React.useContext(GameContext)
   return (
     <Wrapper>
@@ -12,8 +12,8 @@ const GameComplete = () => {
         You got {correct} correct
         <br /> in {gameTime} seconds
       </h4>
-    
-      <h4> Press Play Now to try again </h4>
+      <button type='button' onClick={() => handleTabChange(4)}>See What you missed</button>
+      <h4> Press Play Now to try again</h4>
     </Wrapper>
   )
 }

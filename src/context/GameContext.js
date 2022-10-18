@@ -3,7 +3,6 @@ import reducer from "../reducer/gameReducer"
 const GameContext = React.createContext()
 
 const getLocalStorage = () => {
-  console.log('get Local storage');
   const scores = JSON.parse(localStorage.getItem('scores') || '[]')
   localStorage.setItem(
     "scores",
@@ -31,10 +30,11 @@ const GameContextProvider = ({ children }) => {
   const [gameOver, setGameOver] = useState(false)
   const [playing, setPlaying] = useState(false)
 
+  const [answeredWrong, setAnsweredWrong] = useState([])
+
   const [state, dispatch] = useReducer(reducer, initialState)
 
   useEffect(() => {
-  
     if(correct === 0){
       return 
     }
@@ -44,14 +44,12 @@ const GameContextProvider = ({ children }) => {
       // scores = (scores.filter((item) => item.playerName !== ''))
       // scores = (scores.filter((item) => item.gameTime > 30))
       // scores = (scores.filter(item => item.correct !== 0))
-
       const newHighScore = {
         playerName: state.playerName,
         operation: state.operation,
         correct,
         gameTime,
       }
-
       scores.push(newHighScore)
       scores.sort((a, b) => b.correct - a.correct )
       localStorage.setItem("scores", JSON.stringify(scores))
@@ -99,7 +97,9 @@ const GameContextProvider = ({ children }) => {
     setanswerSubmitted(!answerSubmitted)
     if (correctAnswer === value) {
       setCorrect((prev) => prev + 1)
-    } else {
+    } else { 
+      let incorrect = {firstNumber, secondNumber, correctAnswer, value, operation: state.operation}
+      setAnsweredWrong(prev => [...prev, incorrect])
       setWrong((prev) => prev + 1)
     }
   }
@@ -108,6 +108,8 @@ const GameContextProvider = ({ children }) => {
     <GameContext.Provider
       value={{
         ...state,
+        answeredWrong,
+        setAnsweredWrong,
         checkAnswer,
         correct,
         setCorrect,

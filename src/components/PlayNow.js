@@ -1,6 +1,6 @@
 import React, { useState, useRef, useEffect } from "react"
 import styled from "styled-components"
-import { GameContext } from "../../context/GameContext.js"
+import { GameContext } from "../context/GameContext.js"
 
 const PlayNow = () => {
   const inputRef = useRef()

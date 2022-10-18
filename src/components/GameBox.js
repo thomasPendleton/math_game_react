@@ -1,11 +1,12 @@
 import React from 'react'
 import styled from "styled-components"
-import GameComplete from "../GameComplete/GameComplete"
-import GameDirection from "../GameDirection/GameDirection"
-import SettingsBox from "../SettingsBox/SettingsBox"
-import HighScores from "../HighScores/HighScores"
-import PlayNow from "../PlayNow/PlayNow"
-import { GameContext } from "../../context/GameContext"
+import GameComplete from "./GameComplete"
+import GameDirection from "./GameDirection"
+import SettingsBox from "./SettingsBox"
+import HighScores from "./HighScores"
+import PlayNow from "./PlayNow"
+import { GameContext } from "../context/GameContext"
+import MissedQuestions from './MissedQuestions'
 
 const GameBox = ({ value, handleTabChange }) => {
   const { gameOver } = React.useContext(GameContext)
@@ -14,9 +15,10 @@ const GameBox = ({ value, handleTabChange }) => {
       <Wrapper className="gameBox">
         {value === 0 && <GameDirection />}
         {value === 1 && <SettingsBox handleTabChange={handleTabChange} />}
-        {value === 2 && gameOver && <GameComplete />}
+        {value === 2 && gameOver && <GameComplete handleTabChange={handleTabChange} />}
         {value === 2 && !gameOver && <PlayNow />}
         {value === 3 && <HighScores />}
+        {value === 4 && <MissedQuestions />}
       </Wrapper>
     </div>
   )

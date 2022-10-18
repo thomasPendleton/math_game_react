@@ -1,8 +1,8 @@
-import React from 'react'
+import React from "react"
 import styled from "styled-components"
 import { FiSettings } from "react-icons/fi"
-import { GameContext } from "../../context/GameContext"
-import CountDownTime from "../CountDownTimer/CountDownTime"
+import { GameContext } from "../context/GameContext"
+import CountDownTime from "./CountDownTime"
 
 const StatusBar = ({ handleTabChange, value }) => {
   const {
@@ -17,10 +17,12 @@ const StatusBar = ({ handleTabChange, value }) => {
     playing,
     setPlaying,
     playerName,
+    setAnsweredWrong,
   } = React.useContext(GameContext)
 
   const handlePlaying = () => {
     if (playerName) {
+      setAnsweredWrong([])
       setCorrect(0)
       setWrong(0)
       handleTabChange(2)

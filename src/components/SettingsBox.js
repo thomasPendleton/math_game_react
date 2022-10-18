@@ -1,6 +1,6 @@
 import React, { useState, useRef, useEffect } from "react"
 import styled from "styled-components"
-import { GameContext } from "../../context/GameContext"
+import { GameContext } from "../context/GameContext"
 import { toast } from 'react-toastify';
 
 
@@ -67,7 +67,7 @@ const SettingsBox = ({ handleTabChange }) => {
               id="multiplication"
               value="multiplication"
               checked={operation === "multiplication" && true}
-              // defaultChecked
+              
             />
             Multiplication
           </label>

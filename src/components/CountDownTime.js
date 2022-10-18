@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react"
 import styled from "styled-components"
-import { GameContext } from "../../context/GameContext"
+import { GameContext } from "../context/GameContext"
 
 
 const CountDownTime = () => {

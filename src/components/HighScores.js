@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react'
 import styled from "styled-components"
-import { GameContext } from "../../context/GameContext"
+import { GameContext } from "../context/GameContext"
 
 const HighScores = () => {
   const { highScores } = React.useContext(GameContext)
@@ -60,7 +60,7 @@ const HighScores = () => {
           <section className="table-data" key={idx}>
             <p>{playerName}</p>
             <p>{correct}</p>
-            <p className="operation">{operation}</p>
+            <p className="operation">{operation === 'multiplication' ? 'multiply' : 'subtract'}</p>
             <p>{gameTime}</p>
           </section>
         )
@@ -73,6 +73,7 @@ const Wrapper = styled.div`
   text-align: center;
   font-size: 26px;
   min-height: 430px;
+  color: #222;
   h2 {
     margin-bottom: 10px;
     text-transform: uppercase;
@@ -90,6 +91,7 @@ const Wrapper = styled.div`
     grid-template-columns: 30% 20% 30% 20%;
     p {
       margin: 10px 0;
+
     }
   }
   .btn-container {
