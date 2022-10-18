@@ -3,7 +3,7 @@ import StatusBar from "./components/StatusBar.js"
 import GameBox from "./components/GameBox"
 
 function App() {
-  const [value, setValue] = useState(4)
+  const [value, setValue] = useState(0)
 
   const handleTabChange = (index) => {
     setValue(index)

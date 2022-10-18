@@ -37,12 +37,13 @@ const MissedQuestions = () => {
 
 const Wrapper = styled.section`
   // change height off
-  height: 500px;
+  /* height: 500px; */
   text-align: center;
   .questions {
     display: grid;
     font-size: 2rem;
-    margin: 10px;
+    margin: 10px
+    10px 20px;
     grid-template-columns: repeat(3, 1fr);
     gap: 1rem;
     .question {
