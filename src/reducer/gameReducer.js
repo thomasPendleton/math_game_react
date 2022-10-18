@@ -13,10 +13,11 @@ function reducer (state, action){
     if(action.type === 'SET_HIGH_SCORES'){
         // console.log(action.payload)
       
-        const sortedPayload = action.payload.sort((a, b) => {
-            return b.correct - a.correct
-        })
-        return {...state, highScores: sortedPayload}
+        // const sortedPayload = action.payload.sort((a, b) => {
+        //     return b.correct - a.correct
+        // })
+        // console.log(sortedPayload);
+        return {...state, highScores: action.payload}
     }
 
 

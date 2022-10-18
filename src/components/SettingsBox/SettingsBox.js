@@ -17,8 +17,8 @@ const SettingsBox = ({ handleTabChange }) => {
   const nameRef = useRef()
   useEffect(() => {
     nameRef.current.focus()
-    console.log(!operation);
-    console.log(operation);
+    // console.log(!operation);
+    // console.log(operation);
   }, [])
 
   const handlePlayerSumbit = (e) => {
@@ -28,7 +28,7 @@ const SettingsBox = ({ handleTabChange }) => {
       handleTabChange(0)
     } else if (name === "") {
       toast.error("Please enter a name")
-    } else if (operation === '') {
+    } else if (operation === "") {
       toast.error("Please enter an operation")
     } else if (gameTime === null) {
       toast.error("Please enter a game time")
@@ -58,32 +58,55 @@ const SettingsBox = ({ handleTabChange }) => {
             />
           </label>
         </div>
-        <fieldset onChange={(e) => setOperationReducer(e.target.value)}>
+        <fieldset>
           <label htmlFor="multiplication">
             <input
+              onChange={(e) => setOperationReducer(e.target.value)}
               type="radio"
               name="math"
               id="multiplication"
               value="multiplication"
+              checked={operation === "multiplication" && true}
               // defaultChecked
             />
             Multiplication
           </label>
           <br />
           <label htmlFor="subtract">
-            <input type="radio" name="math" id="subtract" value="subtraction" />
+            <input
+              onChange={(e) => setOperationReducer(e.target.value)}
+              checked={operation === "subtraction" && true}
+              type="radio"
+              name="math"
+              id="subtract"
+              value="subtraction"
+            />
             Subtraction
           </label>
         </fieldset>
 
         <fieldset onChange={(e) => setGameTime(e.target.value)}>
           <label htmlFor="45">
-            <input type="radio" name="time" id="45" value="45" />
+            <input
+              onChange={(e) => setGameTime(e.target.value)}
+              checked={gameTime === "45" && true}
+              type="radio"
+              name="time"
+              id="45"
+              value="45"
+            />
             45 seconds
           </label>
           <br />
           <label htmlFor="90">
-            <input type="radio" name="time" id="90" value="90" />
+            <input
+              onChange={(e) => setGameTime(e.target.value)}
+              checked={gameTime === "90" && true}
+              type="radio"
+              name="time"
+              id="90"
+              value="90"
+            />
             90 seconds
           </label>
         </fieldset>

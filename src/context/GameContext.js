@@ -3,6 +3,7 @@ import reducer from "../reducer/gameReducer"
 const GameContext = React.createContext()
 
 const getLocalStorage = () => {
+  console.log('get Local storage');
   const scores = JSON.parse(localStorage.getItem('scores') || '[]')
   localStorage.setItem(
     "scores",
@@ -27,18 +28,22 @@ const GameContextProvider = ({ children }) => {
   const [secondNumber, setSecondNumber] = useState(0)
   const [correctAnswer, setCorrectAnswer] = useState(0)
   const [answerSubmitted, setanswerSubmitted] = useState(true)
-  //change gameOver back to false
   const [gameOver, setGameOver] = useState(false)
   const [playing, setPlaying] = useState(false)
 
   const [state, dispatch] = useReducer(reducer, initialState)
 
   useEffect(() => {
+  
+    if(correct === 0){
+      return 
+    }
     if (gameOver && state.playerName) {
       let scores = JSON.parse(localStorage.getItem("scores") || "[]")
-      // the next two filters are used during testing only.
+      // the next 3 filters are used during testing only.
       // scores = (scores.filter((item) => item.playerName !== ''))
       // scores = (scores.filter((item) => item.gameTime > 30))
+      // scores = (scores.filter(item => item.correct !== 0))
 
       const newHighScore = {
         playerName: state.playerName,
@@ -47,22 +52,8 @@ const GameContextProvider = ({ children }) => {
         gameTime,
       }
 
-      if (
-        scores.find(
-          (item) =>
-            state.playerName === item.playerName &&
-            state.operation === item.operation &&
-            correct > item.correct
-        )
-      ) {
-        // console.log('same name and operation and higher correct')
-        scores.push(newHighScore)
-      }
-      if (!scores.find((item) => state.playerName === item.playerName)) {
-        // console.log('new player')
-        scores.push(newHighScore)
-      }
-
+      scores.push(newHighScore)
+      scores.sort((a, b) => b.correct - a.correct )
       localStorage.setItem("scores", JSON.stringify(scores))
     }
     dispatch({ type: "SET_HIGH_SCORES", payload: getLocalStorage() })
