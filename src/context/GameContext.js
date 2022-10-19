@@ -41,9 +41,9 @@ const GameContextProvider = ({ children }) => {
     if (gameOver && state.playerName) {
       let scores = JSON.parse(localStorage.getItem("scores") || "[]")
       // the next 3 filters are used during testing only.
-      // scores = (scores.filter((item) => item.playerName !== ''))
-      // scores = (scores.filter((item) => item.gameTime > 30))
-      // scores = (scores.filter(item => item.correct !== 0))
+      scores = (scores.filter((item) => item.playerName !== ''))
+      scores = (scores.filter((item) => item.gameTime > 30))
+      scores = (scores.filter(item => item.correct !== 0))
       const newHighScore = {
         playerName: state.playerName,
         operation: state.operation,

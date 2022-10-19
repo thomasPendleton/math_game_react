@@ -27,7 +27,7 @@ const GameBox = ({ value, handleTabChange }) => {
 const Wrapper = styled.div`
   border-radius: 20px;
   background-color: rgb(250, 198, 164);
-  max-height: 600px;
+  /* max-height: 600px; */
   width: 100%;
   max-width: 500px;
   box-shadow: 1px 1px 3px 0 rgba(189, 191, 192, 0.9);
