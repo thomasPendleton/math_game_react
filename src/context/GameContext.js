@@ -1,13 +1,11 @@
 import React, { useState, useEffect, useReducer } from "react"
+import axios from "axios"
 import reducer from "../reducer/gameReducer"
 const GameContext = React.createContext()
 
 const getLocalStorage = () => {
-  const scores = JSON.parse(localStorage.getItem('scores') || '[]')
-  localStorage.setItem(
-    "scores",
-    JSON.stringify(scores)
-  )
+  const scores = JSON.parse(localStorage.getItem("scores") || "[]")
+  localStorage.setItem("scores", JSON.stringify(scores))
   return scores
 }
 
@@ -16,7 +14,6 @@ const initialState = {
   operation: "",
   highScores: getLocalStorage(),
   gameTime: 45,
-
 }
 
 const GameContextProvider = ({ children }) => {
@@ -35,15 +32,16 @@ const GameContextProvider = ({ children }) => {
   const [state, dispatch] = useReducer(reducer, initialState)
 
   useEffect(() => {
-    if(correct === 0){
-      return 
+    if (correct === 0) {
+      return
     }
     if (gameOver && state.playerName) {
       let scores = JSON.parse(localStorage.getItem("scores") || "[]")
       // the next 3 filters are used during testing only.
-      scores = (scores.filter((item) => item.playerName !== ''))
-      scores = (scores.filter((item) => item.gameTime > 30))
-      scores = (scores.filter(item => item.correct !== 0))
+      scores = scores.filter((item) => item.playerName !== "")
+      scores = scores.filter((item) => item.gameTime > 30)
+      scores = scores.filter((item) => item.correct !== 0)
+
       const newHighScore = {
         playerName: state.playerName,
         operation: state.operation,
@@ -51,11 +49,12 @@ const GameContextProvider = ({ children }) => {
         gameTime,
       }
       scores.push(newHighScore)
-      scores.sort((a, b) => b.correct - a.correct )
+      scores.sort((a, b) => b.correct - a.correct)
       localStorage.setItem("scores", JSON.stringify(scores))
     }
     dispatch({ type: "SET_HIGH_SCORES", payload: getLocalStorage() })
   }, [gameOver])
+
 
   const setPlayerNameReducer = (name) => {
     dispatch({ type: "SET_PLAYER_NAME", payload: name })
@@ -97,9 +96,15 @@ const GameContextProvider = ({ children }) => {
     setanswerSubmitted(!answerSubmitted)
     if (correctAnswer === value) {
       setCorrect((prev) => prev + 1)
-    } else { 
-      let incorrect = {firstNumber, secondNumber, correctAnswer, value, operation: state.operation}
-      setAnsweredWrong(prev => [...prev, incorrect])
+    } else {
+      let incorrect = {
+        firstNumber,
+        secondNumber,
+        correctAnswer,
+        value,
+        operation: state.operation,
+      }
+      setAnsweredWrong((prev) => [...prev, incorrect])
       setWrong((prev) => prev + 1)
     }
   }
