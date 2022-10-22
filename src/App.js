@@ -14,7 +14,7 @@ function App() {
     <div>
       <StatusBar handleTabChange={handleTabChange} value={value} />
       <GameBox handleTabChange={handleTabChange} value={value} />
-      <HighScoresContext />
+      {/* <HighScoresContext /> */}
     </div>
   )
 }
