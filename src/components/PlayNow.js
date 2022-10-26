@@ -104,7 +104,7 @@ const Wrapper = styled.div`
       font-size: 3.5rem;
     }
     .operation {
-      font-size: 3rem;
+      font-size: 2.2rem;
       position: relative;
       left: 3px;
       top: -4px;

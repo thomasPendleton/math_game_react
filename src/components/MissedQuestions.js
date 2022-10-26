@@ -66,7 +66,7 @@ const Wrapper = styled.section`
       }
       .operation {
         position: absolute;
-        font-size: 1.5rem;
+        font-size: 1.1rem;
         left: 20%;
         bottom: 3px;
       }
