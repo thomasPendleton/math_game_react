@@ -20,13 +20,9 @@ const HighScores = () => {
   }
 
   useEffect(() => {
-    const filteredScores = highScores.filter((item) => {
-      // redundant filter here. was used for additional logic that was removed.
-      return item
-    }).filter((item, idx) => {
+    const filteredScores = highScores.filter((item, idx) => {
       //filters the first 7 from the highscores list
       return idx < 7
-
     })
     setFilteredScores(filteredScores)
   }, [])

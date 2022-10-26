@@ -1,7 +1,6 @@
 import React, { useState } from 'react'
 import StatusBar from "./components/StatusBar.js"
 import GameBox from "./components/GameBox"
-import HighScoresContext from './context/HighScoresContext.js'
 
 function App() {
   const [value, setValue] = useState(0)

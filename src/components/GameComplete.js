@@ -20,7 +20,7 @@ const GameComplete = ({ handleTabChange }) => {
       <h3>Good Job {playerName}!</h3>
       <h4>
         You got {correct} correct
-        <br /> in {gameTime} seconds
+        <br /> in {gameTime} seconds.
       </h4>
       {answeredWrong.length > 0 && (
         <button
@@ -28,7 +28,7 @@ const GameComplete = ({ handleTabChange }) => {
           type="button"
           onClick={() => handleTabChange(4)}
         >
-          See What you missed
+          See what you missed
         </button>
       )}
       <h4 className="press-play"> Press Play Now to try again</h4>
