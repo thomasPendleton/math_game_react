@@ -100,6 +100,11 @@ const GameContextProvider = ({ children }) => {
   const checkAnswer = (value) => {
     setanswerSubmitted(!answerSubmitted)
     if (correctAnswer === value) {
+      // set correct sound here
+      //
+      //
+      //
+
       setCorrect((prev) => prev + 1)
     } else {
       let incorrect = {
@@ -109,6 +114,9 @@ const GameContextProvider = ({ children }) => {
         value,
         operation: state.operation,
       }
+      // set wrong answer sound here
+      //
+      //
       setAnsweredWrong((prev) => [...prev, incorrect])
       setWrong((prev) => prev + 1)
     }
