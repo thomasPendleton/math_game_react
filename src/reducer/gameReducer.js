@@ -20,11 +20,13 @@ function reducer (state, action){
         return {...state, highScores: action.payload}
     }
 
-
-    //change to new action type
     if(action.type === 'SET_GAMETIME'){
         // console.log(action.payload)
         return {...state, gameTime: action.payload }
+    }
+    if (action.type === "SET_LEVEL") {
+      console.log(action.payload)
+      return { ...state, level: action.payload }
     }
     
     return {...state}

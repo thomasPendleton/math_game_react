@@ -55,12 +55,15 @@ const HighScores = () => {
         <h5>Time</h5>
       </div>
       {filteredScores.map((item, idx) => {
-        const { playerName, operation, correct, gameTime } = item
+        const { playerName, operation, correct, gameTime, level } = item
         return (
           <section className="table-data" key={idx}>
             <p>{playerName}</p>
             <p>{correct}</p>
-            <p className="operation">{operation === 'multiplication' ? 'multiply' : 'subtract'}</p>
+            <p className="operation">
+              {level === "easy" ? "(e)" : level === "hard" ? "(h)" : ""}{" "}
+              {operation === "multiplication" ? "multiply" : "subtract"}
+            </p>
             <p>{gameTime}</p>
           </section>
         )
@@ -71,7 +74,8 @@ const HighScores = () => {
 
 const Wrapper = styled.div`
   text-align: center;
-  font-size: 26px;
+  /* font-size: 26px; */
+  font-size: 1.2rem;
   min-height: 430px;
   color: #222;
   h2 {
@@ -91,7 +95,6 @@ const Wrapper = styled.div`
     grid-template-columns: 30% 20% 30% 20%;
     p {
       margin: 10px 0;
-
     }
   }
   .btn-container {
@@ -116,6 +119,10 @@ const Wrapper = styled.div`
         box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.3);
       }
     }
+  }
+  @media only screen and (min-width: 520px) {
+    font-size: 1.7rem;
+
   }
 `
 

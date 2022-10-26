@@ -12,13 +12,14 @@ const SettingsBox = ({ handleTabChange }) => {
     operation,
     setPlayerNameReducer,
     gameTime,
+    setLevelReducer,
+    level,
   } = React.useContext(GameContext)
   const [name, setName] = useState(playerName)
   const nameRef = useRef()
+
   useEffect(() => {
     nameRef.current.focus()
-    // console.log(!operation);
-    // console.log(operation);
   }, [])
 
   const handlePlayerSumbit = (e) => {
@@ -59,7 +60,7 @@ const SettingsBox = ({ handleTabChange }) => {
           </label>
         </div>
         <fieldset>
-          <label htmlFor="multiplication">
+          <label htmlFor="multiplication" className="multi">
             <input
               onChange={(e) => setOperationReducer(e.target.value)}
               type="radio"
@@ -67,14 +68,45 @@ const SettingsBox = ({ handleTabChange }) => {
               id="multiplication"
               value="multiplication"
               checked={operation === "multiplication" && true}
-              
             />
             Multiplication
           </label>
+
+          {operation === "multiplication" && (
+            <>
+              <br />
+              <label className="level" htmlFor="easy">
+                <input
+                  onChange={(e) => setLevelReducer(e.target.value)}
+                  type="radio"
+                  name="level"
+                  id="easy"
+                  value="easy"
+                  checked={level === "easy" && true}
+                />
+                easy
+              </label>
+              <label className="level" htmlFor="hard">
+                <input
+                  onChange={(e) => setLevelReducer(e.target.value)}
+                  type="radio"
+                  name="level"
+                  id="hard"
+                  value="hard"
+                  checked={level === "hard" && true}
+                />
+                hard
+              </label>
+            </>
+          )}
+
           <br />
           <label htmlFor="subtract">
             <input
-              onChange={(e) => setOperationReducer(e.target.value)}
+              onChange={(e) => {
+                setOperationReducer(e.target.value)
+                setLevelReducer("")
+              }}
               checked={operation === "subtraction" && true}
               type="radio"
               name="math"
@@ -147,6 +179,17 @@ const Wrapper = styled.div`
     label {
       cursor: pointer;
       padding: 0 10px;
+    }
+    .multi {
+      input {
+        margin-bottom: 0;
+      }
+    }
+  }
+  .level {
+    font-size: 1.4rem;
+    input {
+      margin-bottom: 20px;
     }
   }
   .okBtn {

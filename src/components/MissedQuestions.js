@@ -4,16 +4,15 @@ import { GameContext } from "../context/GameContext"
 
 const MissedQuestions = () => {
   const { answeredWrong } = useContext(GameContext)
-  console.log(answeredWrong)
   return (
     <Wrapper>
       <h1>Missed Questions</h1>
       <div className="questions">
-        {answeredWrong.map((question) => {
+        {answeredWrong.map((question, idx) => {
           const { firstNumber, operation, secondNumber, correctAnswer, value } =
             question
           return (
-            <div className="question">
+            <div className="question" key={idx}>
               <p>{firstNumber}</p>
 
               <p className="second">

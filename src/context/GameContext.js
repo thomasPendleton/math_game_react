@@ -14,6 +14,7 @@ const initialState = {
   operation: "",
   highScores: getLocalStorage(),
   gameTime: 45,
+  level: "easy",
 }
 
 const GameContextProvider = ({ children }) => {
@@ -47,6 +48,7 @@ const GameContextProvider = ({ children }) => {
         operation: state.operation,
         correct,
         gameTime,
+        level: state.level
       }
       scores.push(newHighScore)
       scores.sort((a, b) => b.correct - a.correct)
@@ -54,7 +56,6 @@ const GameContextProvider = ({ children }) => {
     }
     dispatch({ type: "SET_HIGH_SCORES", payload: getLocalStorage() })
   }, [gameOver])
-
 
   const setPlayerNameReducer = (name) => {
     dispatch({ type: "SET_PLAYER_NAME", payload: name })
@@ -65,10 +66,14 @@ const GameContextProvider = ({ children }) => {
   const setGameTimeReducer = (time) => {
     dispatch({ type: "SET_GAMETIME", payload: time })
   }
+  const setLevelReducer = (level) => {
+    dispatch({ type: "SET_LEVEL", payload: level })
+  }
 
   useEffect(() => {
     function randomMath(x) {
-      const highestNumber = state.operation === "multiplication" ? 12 : 20
+      const highestNumber =
+        state.operation === "subtraction" ? 20 : state.level === "easy" ? 5 : 12
       return Math.floor(Math.random() * highestNumber) + 1
     }
 
@@ -131,6 +136,7 @@ const GameContextProvider = ({ children }) => {
         setPlayerNameReducer,
         setOperationReducer,
         setGameTimeReducer,
+        setLevelReducer,
       }}
     >
       {children}
