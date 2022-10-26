@@ -1,6 +1,8 @@
 import React, { useState, useEffect, useReducer } from "react"
-import axios from "axios"
+// import axios from "axios"
 import reducer from "../reducer/gameReducer"
+import correctSound from "../assets/ding.mp3"
+import wrongSound from "../assets/sounds_wrong.mp3"
 const GameContext = React.createContext()
 
 const getLocalStorage = () => {
@@ -33,9 +35,7 @@ const GameContextProvider = ({ children }) => {
   const [state, dispatch] = useReducer(reducer, initialState)
 
   useEffect(() => {
-    if (correct === 0) {
-      return
-    }
+    if (correct === 0) return
     if (gameOver && state.playerName) {
       let scores = JSON.parse(localStorage.getItem("scores") || "[]")
       // the next 3 filters are used during testing only.
@@ -48,7 +48,7 @@ const GameContextProvider = ({ children }) => {
         operation: state.operation,
         correct,
         gameTime,
-        level: state.level
+        level: state.level,
       }
       scores.push(newHighScore)
       scores.sort((a, b) => b.correct - a.correct)
@@ -100,11 +100,7 @@ const GameContextProvider = ({ children }) => {
   const checkAnswer = (value) => {
     setanswerSubmitted(!answerSubmitted)
     if (correctAnswer === value) {
-      // set correct sound here
-      //
-      //
-      //
-
+      new Audio(correctSound).play()
       setCorrect((prev) => prev + 1)
     } else {
       let incorrect = {
@@ -114,9 +110,8 @@ const GameContextProvider = ({ children }) => {
         value,
         operation: state.operation,
       }
-      // set wrong answer sound here
-      //
-      //
+
+      new Audio(wrongSound).play()
       setAnsweredWrong((prev) => [...prev, incorrect])
       setWrong((prev) => prev + 1)
     }

@@ -74,7 +74,6 @@ const Wrapper = styled.div`
   .equals {
     display: none;
   }
-
   .operation {
     font-size: 2.7rem;
     position: absolute;
@@ -84,7 +83,6 @@ const Wrapper = styled.div`
   .answer-form {
     text-align: center;
   }
-
   .answer {
     width: 30%;
     font-size: 5rem;

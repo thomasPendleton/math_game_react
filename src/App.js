@@ -10,6 +10,7 @@ function App() {
     setValue(index)
   }
 
+
   return (
     <div>
       <StatusBar handleTabChange={handleTabChange} value={value} />

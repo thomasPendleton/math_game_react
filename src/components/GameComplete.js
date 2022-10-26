@@ -1,10 +1,19 @@
-import React from 'react'
+import React, { useEffect } from "react"
 import styled from "styled-components"
 import { GameContext } from "../context/GameContext"
+import applause from "../assets/sounds_applause.mp3"
 
 const GameComplete = ({ handleTabChange }) => {
-  const { correct, gameTime, playerName, answeredWrong } =
+  const { correct, gameTime, playerName, answeredWrong, gameOver, wrong } =
     React.useContext(GameContext)
+
+  useEffect(() => {
+    console.log(correct, wrong)
+    if (correct > 9 && wrong < 5) {
+      new Audio(applause).play()
+    }
+  }, [gameOver])
+
   return (
     <Wrapper>
       <h2>Time is up!</h2>
@@ -33,13 +42,28 @@ const Wrapper = styled.div`
   color: rgb(17, 23, 23);
   margin-bottom: 40px;
   .check-missed {
-    margin: 10px;
-    background-color: orangered;
-    border-radius: 10px;
-    padding: 5px 10px;
+    margin: 10px 0 30px;
+    background-color: rgb(252, 87, 26);
+    border-radius: 5px;
+    padding: 10px 20px;
     border: 1px solid #333;
     cursor: pointer;
+    border: none;
+    box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.3);
+    opacity: 1;
+    font-size: 24px;
+    transition: transform 0.3s ease;
+    transition: opacity 0.3s ease;
+    &:hover {
+      opacity: 0.8;
+    }
+    &:active {
+      transition: box-shadow 0.1s;
+      transform: translateY(4px);
+      box-shadow: 1px 1px 10px rgba(0, 0, 0, 0.3);
+    }
   }
+
   h4 {
     margin: 0 auto 20px;
   }
