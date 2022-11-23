@@ -8,7 +8,6 @@ const GameComplete = ({ handleTabChange }) => {
     React.useContext(GameContext)
 
   useEffect(() => {
-    console.log(correct, wrong)
     if (correct > 9 && wrong < 5) {
       new Audio(applause).play()
     }

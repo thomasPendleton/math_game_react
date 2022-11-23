@@ -2,29 +2,26 @@ import React, { useState, useEffect } from "react"
 import styled from "styled-components"
 import { GameContext } from "../context/GameContext"
 
-
 const CountDownTime = () => {
   const { gameTime, setGameOver, gameOver, playing, setPlaying } =
     React.useContext(GameContext)
   const [timeLeft, setTimeLeft] = useState(gameTime)
 
   useEffect(() => {
-    let myInterval = setInterval(() => {
+    const myInterval = setInterval(() => {
       if (timeLeft > 0) {
-        setTimeLeft(timeLeft - 1)
+        setTimeLeft((prev) => prev - 1)
       }
-      if (timeLeft === 0) {
+      if (timeLeft <= 0) {
         clearInterval(myInterval)
         setGameOver(true)
         setPlaying(false)
-      } else {
-        setTimeLeft(timeLeft - 1)
       }
     }, 1000)
     return () => {
       clearInterval(myInterval)
     }
-  })
+  }, [timeLeft])
 
   return (
     <Wrapper>
