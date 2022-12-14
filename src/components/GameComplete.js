@@ -25,12 +25,14 @@ const GameComplete = ({ handleTabChange }) => {
   }
 
 
-  
+
   useEffect(() => {
     if (correct > 9 && wrong < 5) {
       new Audio(applause).play()
     }
-    newScoreFetch()
+    if(wrong < 10){
+      newScoreFetch()
+    }
   }, [gameOver])
 
   return (
