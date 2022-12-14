@@ -4,13 +4,33 @@ import { GameContext } from "../context/GameContext"
 import applause from "../assets/sounds_applause.mp3"
 
 const GameComplete = ({ handleTabChange }) => {
-  const { correct, gameTime, playerName, answeredWrong, gameOver, wrong } =
+  const { correct, gameTime, playerName, answeredWrong, gameOver, wrong, operation, level } =
     React.useContext(GameContext)
 
+  const newScoreFetch = async () => {
+    const response = await fetch("http://localhost:3005/score", {
+      method: "post",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        playerName,
+        gameTime,
+        correct,
+        wrong,
+        operation, 
+        level
+      }),
+    })
+    const data = await response.json()
+    console.log(data)
+  }
+
+
+  
   useEffect(() => {
     if (correct > 9 && wrong < 5) {
       new Audio(applause).play()
     }
+    newScoreFetch()
   }, [gameOver])
 
   return (
