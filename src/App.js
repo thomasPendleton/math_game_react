@@ -1,4 +1,7 @@
 import React, { useState } from 'react'
+import ReactDOM from "react-dom/client"
+import { BrowserRouter, Routes, Route } from "react-router-dom"
+
 import StatusBar from "./components/StatusBar.js"
 import GameBox from "./components/GameBox"
 import HighScoresPage from './pages/HighScoresPage.js'
