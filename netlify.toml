@@ -1,4 +1,4 @@
 [[redirects]]
   from = "/*"
-  to = "/"
+  to = "https://multiply-math-game.netlify.app"
   status = 301
