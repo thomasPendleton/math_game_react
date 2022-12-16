@@ -8,6 +8,8 @@ const HighScoresContext = React.createContext()
 const HighScoresContextProvider = ({ children }) => {
   const [ScoreData, setData] = useState({})
   const { gameOver } = useContext(GameContext)
+
+  
   const fetchHighScores = async () => {
     const response = await fetch("https://shrouded-refuge-51814.herokuapp.com/getscores")
     const data = await response.json()
