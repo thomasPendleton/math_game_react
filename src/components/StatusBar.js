@@ -1,10 +1,12 @@
 import React from "react"
+import { NavLink, useNavigate, Link } from "react-router-dom"
 import styled from "styled-components"
 import { FiSettings } from "react-icons/fi"
 import { GameContext } from "../context/GameContext"
 import CountDownTime from "./CountDownTime"
 
-const StatusBar = ({ handleTabChange, value }) => {
+const StatusBar = () => {
+  let navigate = useNavigate()
   const {
     correct,
     wrong,
@@ -25,13 +27,12 @@ const StatusBar = ({ handleTabChange, value }) => {
       setAnsweredWrong([])
       setCorrect(0)
       setWrong(0)
-      handleTabChange(2)
       setGameOver(false)
       setGameTime(gameTime)
       setPlaying(true)
+      navigate("/play")
     }
   }
-
   return (
     <>
       <Wrapper className="header">
@@ -43,26 +44,23 @@ const StatusBar = ({ handleTabChange, value }) => {
         </div>
         <div>Correct: {correct}</div>
 
-        {value === 2 && !gameOver ? (
+        {playing && !gameOver ? (
           <CountDownTime />
         ) : (
-          <div className="settings" onClick={() => handleTabChange(1)}>
+          <NavLink className="settings" to="/settings">
             <div className="settingsText">Settings</div>
             <FiSettings className="settingsIcon" />
-          </div>
+          </NavLink>
         )}
 
         <div>Wrong: {wrong}</div>
-        <div
+
+        <NavLink
+          to="/highscores"
           className={playing ? "high_scores disabled" : "high_scores"}
-          onClick={() => {
-            if (!playing) {
-              handleTabChange(3)
-            }
-          }}
         >
           High Scores
-        </div>
+        </NavLink>
       </Wrapper>
     </>
   )
@@ -97,8 +95,10 @@ const Wrapper = styled.header`
   .disabled {
     color: rgba(48, 48, 48, 0.845);
     filter: blur(1px);
-    cursor: default;
+    cursor: not-allowed;
+    pointer-events: none;
   }
+
   @media only screen and (max-width: 680px) {
     font-size: 1.1rem;
     font-weight: 500;

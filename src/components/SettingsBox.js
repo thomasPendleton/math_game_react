@@ -2,9 +2,12 @@ import React, { useState, useRef, useEffect } from "react"
 import styled from "styled-components"
 import { GameContext } from "../context/GameContext"
 import { toast } from 'react-toastify';
+import { Link, useNavigate } from "react-router-dom"
 
 
-const SettingsBox = ({ handleTabChange }) => {
+
+const SettingsBox = () => {
+  let navigate = useNavigate()
   const {
     playerName,
     setGameTime,
@@ -15,6 +18,7 @@ const SettingsBox = ({ handleTabChange }) => {
     setLevelReducer,
     level,
   } = React.useContext(GameContext)
+
   const [name, setName] = useState(playerName)
   const nameRef = useRef()
 
@@ -22,11 +26,11 @@ const SettingsBox = ({ handleTabChange }) => {
     nameRef.current.focus()
   }, [])
 
-  const handlePlayerSumbit = (e) => {
+  const handlePlayerSubmit = (e) => {
     e.preventDefault()
     if (name && gameTime && operation) {
       setPlayerNameReducer(name)
-      handleTabChange(0)
+      navigate("/")
     } else if (name === "") {
       toast.error("Please enter a name")
     } else if (operation === "") {
@@ -42,22 +46,20 @@ const SettingsBox = ({ handleTabChange }) => {
       <form
         action="submit"
         className="settingsForm"
-        onSubmit={handlePlayerSumbit}
+        onSubmit={handlePlayerSubmit}
       >
         <div className="playerName">
-          <label htmlFor="playerName">
-            Player Name:
-            <input
-              ref={nameRef}
-              type="text"
-              value={name}
-              id="playerName"
-              maxLength="10"
-              onChange={(e) => {
-                setName(e.target.value)
-              }}
-            />
-          </label>
+          <label htmlFor="playerName">Player Name: </label>
+          <input
+            ref={nameRef}
+            type="text"
+            value={name}
+            id="playerName"
+            maxLength="10"
+            onChange={(e) => {
+              setName(e.target.value)
+            }}
+          />
         </div>
         <fieldset>
           <label htmlFor="multiplication" className="multi">
@@ -158,6 +160,13 @@ const Wrapper = styled.div`
   text-align: center;
   font-size: 30px;
   margin-bottom: 20px;
+
+  .playerName {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
   h2 {
     margin: 20px 0 10px;
   }
@@ -165,6 +174,8 @@ const Wrapper = styled.div`
     border: none;
   }
   .settingsForm {
+    margin: 0 auto;
+    max-width: 700px;
     font-size: 26px;
     div {
       margin: 10px;
@@ -178,7 +189,7 @@ const Wrapper = styled.div`
     }
     label {
       cursor: pointer;
-      padding: 0 10px;
+      padding: 5px 10px;
     }
     .multi {
       input {
@@ -214,14 +225,15 @@ const Wrapper = styled.div`
   }
 
   .playerName input {
-    max-width: 100%;
+    /* margin: auto; */
+    max-width: 70%;
   }
 
   .btnContainer {
     padding-top: 20px;
   }
 
-  @media only screen and (max-width: 450px) {
+  @media only screen and (min-width: 450px) {
     h2 {
       font-size: 2.4rem;
       margin-top: 5px;

@@ -6,26 +6,27 @@ import reportWebVitals from './reportWebVitals';
 import { GameContextProvider } from "./context/GameContext"
 import { ToastContainer } from "react-toastify"
 import 'react-toastify/dist/ReactToastify.css';
-
-
+import { HighScoresContextProvider } from "./context/HighScoresContext"
 
 const root = ReactDOM.createRoot(document.getElementById("root"))
 root.render(
   <React.StrictMode>
     <GameContextProvider>
-      <App />
-      <ToastContainer
-        position="top-right"
-        hideProgressBar
-        autoClose={3000}
-        newestOnTop={false}
-        closeOnClick
-        rtl={false}
-        pauseOnFocusLoss
-        draggable
-        pauseOnHover
-        theme="light"
-      />
+      <HighScoresContextProvider>
+        <App />
+        <ToastContainer
+          position="top-right"
+          hideProgressBar
+          autoClose={3000}
+          newestOnTop={false}
+          closeOnClick
+          rtl={false}
+          pauseOnFocusLoss
+          draggable
+          pauseOnHover
+          theme="light"
+        />
+      </HighScoresContextProvider>
     </GameContextProvider>
   </React.StrictMode>
 )

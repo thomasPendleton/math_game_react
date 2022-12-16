@@ -52,9 +52,10 @@ const PlayNow = () => {
 const Wrapper = styled.div`
   display: flex;
   flex-direction: column;
-  margin: 40px;
+  margin: 40px auto;
   align-items: center;
   height: 100%;
+  max-width: 420px;
   h4 {
     margin: 0px;
   }
@@ -84,8 +85,8 @@ const Wrapper = styled.div`
     text-align: center;
   }
   .answer {
-    width: 30%;
-    font-size: 5rem;
+    width: 34%;
+    font-size: 4.9rem;
     border-radius: 5px;
     text-align: center;
   }
@@ -94,7 +95,8 @@ const Wrapper = styled.div`
 
   @media only screen and (max-width: 450px) {
     flex-direction: row;
-    align-items: flex-start;
+    /* align-items: flex-start; */
+    justify-content: center;
     margin: 30px 10px 30px;
     .question {
       display: flex;
@@ -119,7 +121,7 @@ const Wrapper = styled.div`
     }
     .answer {
       font-size: 3rem;
-      width: 90%;
+      width: 80%;
     }
   }
 `

@@ -1,8 +1,10 @@
 import React, { useState, useEffect } from "react"
+import { useNavigate } from "react-router-dom"
 import styled from "styled-components"
 import { GameContext } from "../context/GameContext"
 
 const CountDownTime = () => {
+  let navigate = useNavigate()
   const { gameTime, setGameOver, gameOver, playing, setPlaying } =
     React.useContext(GameContext)
   const [timeLeft, setTimeLeft] = useState(gameTime)
@@ -16,6 +18,7 @@ const CountDownTime = () => {
         clearInterval(myInterval)
         setGameOver(true)
         setPlaying(false)
+        navigate('/gamecomplete')
       }
     }, 1000)
     return () => {

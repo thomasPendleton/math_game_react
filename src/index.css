@@ -43,3 +43,7 @@ input[type='number'] {
 /*  */
 /* _________________________________________________ */
 
+a{
+  text-decoration: none;
+  color: black;
+}

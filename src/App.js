@@ -1,24 +1,31 @@
-import React, { useState } from 'react'
-import ReactDOM from "react-dom/client"
+import React from "react"
 import { BrowserRouter, Routes, Route } from "react-router-dom"
-
 import StatusBar from "./components/StatusBar.js"
-import GameBox from "./components/GameBox"
-import HighScoresPage from './pages/HighScoresPage.js'
+import HighScoresPage from "./pages/HighScoresPage.js"
+import GameDirection from "./components/GameDirection.js"
+import SettingsBox from "./components/SettingsBox.js"
+import HighScores from "./components/HighScores.js"
+import PlayNow from "./components/PlayNow.js"
+import GameComplete from "./components/GameComplete.js"
+import MissedQuestions from "./components/MissedQuestions.js"
+import ReactTable from "./components/ReactTable.js"
 
 function App() {
-  const [value, setValue] = useState(0)
-
-  const handleTabChange = (index) => {
-    setValue(index)
-  }
-
-
   return (
-    <div>
-      <StatusBar handleTabChange={handleTabChange} value={value} />
-      <GameBox handleTabChange={handleTabChange} value={value} />
-    </div>
+    <BrowserRouter>
+      <StatusBar />
+      <Routes>
+        <Route path="/" element={<GameDirection />} />
+        <Route path="/settings" element={<SettingsBox />} />
+        <Route path="/highScores" element={<HighScores />} />
+        <Route path="/play" element={<PlayNow />} />
+        <Route path="/gamecomplete" element={<GameComplete />} />
+        <Route path="/missedquestions" element={<MissedQuestions />} />
+        <Route path="/reacttable" element={<ReactTable />} />
+
+        <Route path="/highScores/global" element={<HighScoresPage />} />
+      </Routes>
+    </BrowserRouter>
   )
 }
 

@@ -1,7 +1,6 @@
 import React from 'react'
 import styled from "styled-components"
 import GameComplete from "./GameComplete"
-import GameDirection from "./GameDirection"
 import SettingsBox from "./SettingsBox"
 import HighScores from "./HighScores"
 import PlayNow from "./PlayNow"
@@ -13,9 +12,8 @@ const GameBox = ({ value, handleTabChange }) => {
   return (
     <div className="container">
       <Wrapper className="gameBox">
-        {value === 0 && <GameDirection />}
-        {value === 1 && <SettingsBox handleTabChange={handleTabChange} />}
-        {value === 2 && gameOver && <GameComplete handleTabChange={handleTabChange} />}
+        {value === 1 && <SettingsBox  />}
+        {value === 2 && gameOver && <GameComplete  />}
         {value === 2 && !gameOver && <PlayNow />}
         {value === 3 && <HighScores />}
         {value === 4 && <MissedQuestions />}

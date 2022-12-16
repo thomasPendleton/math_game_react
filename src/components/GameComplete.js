@@ -2,13 +2,15 @@ import React, { useEffect } from "react"
 import styled from "styled-components"
 import { GameContext } from "../context/GameContext"
 import applause from "../assets/sounds_applause.mp3"
+import { useNavigate } from "react-router-dom"
 
 const GameComplete = ({ handleTabChange }) => {
+  let navigate = useNavigate()
   const { correct, gameTime, playerName, answeredWrong, gameOver, wrong, operation, level } =
     React.useContext(GameContext)
 
   const newScoreFetch = async () => {
-    const response = await fetch("http://localhost:3005/score", {
+    const response = await fetch("https://shrouded-refuge-51814.herokuapp.com/score", {
       method: "post",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
@@ -30,7 +32,7 @@ const GameComplete = ({ handleTabChange }) => {
     if (correct > 9 && wrong < 5) {
       new Audio(applause).play()
     }
-    if(wrong < 10){
+    if(wrong < 10 && correct > 10){
       newScoreFetch()
     }
   }, [gameOver])
@@ -47,7 +49,7 @@ const GameComplete = ({ handleTabChange }) => {
         <button
           className="check-missed"
           type="button"
-          onClick={() => handleTabChange(4)}
+          onClick={() => navigate('/missedquestions')}
         >
           See what you missed
         </button>

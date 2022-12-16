@@ -1,5 +1,4 @@
 import React, { useState, useEffect, useReducer } from "react"
-// import axios from "axios"
 import reducer from "../reducer/gameReducer"
 import correctSound from "../assets/ding.mp3"
 import wrongSound from "../assets/sounds_wrong.mp3"

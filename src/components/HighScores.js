@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react'
+import { Link } from 'react-router-dom'
 import styled from "styled-components"
 import { GameContext } from "../context/GameContext"
 
@@ -43,6 +44,17 @@ const HighScores = () => {
         >
           Multiplication
         </button>
+
+        {/* Remove these br's */}
+        <br />
+        <br />
+        {/* Remove these br's */}
+        {/* Change back to link to '/highScores/global */}
+        <Link to='/highScores/global'
+          className="okBtn"
+        >
+          Global High Scores
+        </Link>
       </div>
       <div className="table-head">
         <h5>Name</h5>
