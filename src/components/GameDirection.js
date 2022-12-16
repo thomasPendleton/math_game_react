@@ -29,6 +29,7 @@ const GameDirection = () => {
 const Wrapper = styled.div`
   max-width: 600px;
   margin: 0 auto;
+  width: 90%;
   h2 {
     text-align: center;
     font-size: 40px;
@@ -37,7 +38,7 @@ const Wrapper = styled.div`
     margin-bottom: 20px;
   }
   .directionItems {
-    /* padding: 0 50px; */
+    padding: 0 20px;
     margin: 0 0 20px;
     li {
       padding: 15px 0;
