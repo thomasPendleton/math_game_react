@@ -68,10 +68,13 @@ const StatusBar = () => {
 
 const Wrapper = styled.header`
   background-color: #ff4500;
+  /* background-color: #FBAB7E;
+background-image: linear-gradient(62deg, #FBAB7E 0%, #ff4500 100%); */
+
   display: flex;
   justify-content: space-around;
   padding: 40px 5px;
-  border-bottom: 2px solid black;
+  border-bottom: 2px solid #333;
   font-size: 24px;
   div {
     padding: 0 5px;

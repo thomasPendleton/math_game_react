@@ -107,7 +107,7 @@ const Wrapper = styled.div`
   }
   .btn-container {
     .okBtn {
-      margin: 5px 5px;
+      margin: 10px 5px;
       cursor: pointer;
       padding: 5px 10px;
       border-radius: 5px;
