@@ -8,7 +8,6 @@ import HighScores from "./components/HighScores.js"
 import PlayNow from "./components/PlayNow.js"
 import GameComplete from "./components/GameComplete.js"
 import MissedQuestions from "./components/MissedQuestions.js"
-import ReactTable from "./components/ReactTable.js"
 
 function App() {
   return (
@@ -21,9 +20,11 @@ function App() {
         <Route path="/play" element={<PlayNow />} />
         <Route path="/gamecomplete" element={<GameComplete />} />
         <Route path="/missedquestions" element={<MissedQuestions />} />
-        <Route path="/reacttable" element={<ReactTable />} />
 
         <Route path="/highScores/global" element={<HighScoresPage />} />
+
+        {/* Set an error route */}
+        
       </Routes>
     </BrowserRouter>
   )

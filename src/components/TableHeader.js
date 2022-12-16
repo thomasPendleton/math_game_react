@@ -17,7 +17,7 @@ const TableHeader = () => {
 
 const Wrapper = styled.section`
   font-size: 0.8rem;
-  width: 98%;
+  width: 96%;
   display: grid;
   padding: 0px 5px;
   margin: 0 auto;

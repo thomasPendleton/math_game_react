@@ -169,6 +169,8 @@ const Wrapper = styled.div`
   }
   h2 {
     margin: 20px 0 10px;
+    color: #222;
+    filter: drop-shadow(1px 1px 1px #222);
   }
   fieldset {
     border: none;
@@ -230,7 +232,7 @@ const Wrapper = styled.div`
   }
 
   .btnContainer {
-    padding-top: 20px;
+    /* padding-top: 20px; */
   }
 
   @media only screen and (min-width: 450px) {
@@ -252,7 +254,7 @@ const Wrapper = styled.div`
     }
     .btnContainer {
       margin-top: 0;
-      padding-top: 12px;
+      /* padding-top: 12px; */
     }
   }
 `

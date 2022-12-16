@@ -1,5 +1,5 @@
 import React from "react"
-import { NavLink, useNavigate, Link } from "react-router-dom"
+import { NavLink, useNavigate } from "react-router-dom"
 import styled from "styled-components"
 import { FiSettings } from "react-icons/fi"
 import { GameContext } from "../context/GameContext"
@@ -67,7 +67,7 @@ const StatusBar = () => {
 }
 
 const Wrapper = styled.header`
-  background-color: orangered;
+  background-color: #ff4500;
   display: flex;
   justify-content: space-around;
   padding: 40px 5px;

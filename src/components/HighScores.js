@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from 'react'
+import React, { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import styled from "styled-components"
 import { GameContext } from "../context/GameContext"
@@ -45,11 +45,7 @@ const HighScores = () => {
           Multiplication
         </button>
 
-        {/* Remove these br's */}
         <br />
-        <br />
-        {/* Remove these br's */}
-        {/* Change back to link to '/highScores/global */}
         <Link to='/highScores/global'
           className="okBtn"
         >
@@ -82,6 +78,8 @@ const HighScores = () => {
 
 const Wrapper = styled.div`
   text-align: center;
+  margin: 0 auto;
+  max-width: 700px;
   /* font-size: 26px; */
   font-size: 1.2rem;
   min-height: 430px;
@@ -89,6 +87,8 @@ const Wrapper = styled.div`
   h2 {
     margin-bottom: 10px;
     text-transform: uppercase;
+    color: #222;
+    filter: drop-shadow(1px 1px 1px #222);
   }
   .table-head {
     display: grid;
@@ -107,7 +107,7 @@ const Wrapper = styled.div`
   }
   .btn-container {
     .okBtn {
-      margin: 1px 5px;
+      margin: 5px 5px;
       cursor: pointer;
       padding: 5px 10px;
       border-radius: 5px;

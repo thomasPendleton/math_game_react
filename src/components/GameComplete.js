@@ -4,7 +4,7 @@ import { GameContext } from "../context/GameContext"
 import applause from "../assets/sounds_applause.mp3"
 import { useNavigate } from "react-router-dom"
 
-const GameComplete = ({ handleTabChange }) => {
+const GameComplete = () => {
   let navigate = useNavigate()
   const { correct, gameTime, playerName, answeredWrong, gameOver, wrong, operation, level } =
     React.useContext(GameContext)
@@ -23,10 +23,8 @@ const GameComplete = ({ handleTabChange }) => {
       }),
     })
     const data = await response.json()
-    console.log(data)
+    // console.log(data)
   }
-
-
 
   useEffect(() => {
     if (correct > 9 && wrong < 5) {
