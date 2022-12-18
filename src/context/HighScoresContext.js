@@ -11,9 +11,16 @@ const HighScoresContextProvider = ({ children }) => {
 
 
   const fetchHighScores = async () => {
-    const response = await fetch("https://shrouded-refuge-51814.herokuapp.com/getscores")
-    const data = await response.json()
-    setData(data)
+    try {
+      const response = await fetch(
+        "https://shrouded-refuge-51814.herokuapp.com/getscores"
+      )
+      const data = await response.json()
+      setData(data)
+    } catch (error) {
+      return console.log(error)
+    }
+   
   }
 
   // useEffect(() => {

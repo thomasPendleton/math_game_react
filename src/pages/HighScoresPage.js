@@ -10,13 +10,15 @@ const HighScoresPage = () => {
   const [scoreState, setScoreState] = useState([])
 
   const fetchHighScores = async () => {
-    const response = await fetch(
-      "https://shrouded-refuge-51814.herokuapp.com/getscores"
-    )
-    const data = await response.json()
-    // console.log(data);
-    if (data === "failed to add score") return
-    setScoreState(data)
+    try {
+      const response = await fetch(
+        "https://shrouded-refuge-51814.herokuapp.com/getscores"
+      )
+      const data = await response.json()
+      setScoreState(data)
+    } catch (error) {
+      return console.log(error)
+    }
   }
 
   useEffect(() => {
