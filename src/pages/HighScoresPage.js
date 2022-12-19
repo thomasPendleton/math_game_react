@@ -25,6 +25,9 @@ const HighScoresPage = () => {
     fetchHighScores()
     // console.log('highscores fetch')
   }, [gameOver])
+
+
+  
   return (
     <Wrapper>
       <h1>High Scores Global Leaderboard</h1>
