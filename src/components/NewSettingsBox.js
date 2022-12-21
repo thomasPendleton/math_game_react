@@ -270,7 +270,6 @@ const Wrapper = styled.div`
       font-size: 1.4rem;
     }
     .settingsForm {
-      border: 1px solid red;
       margin: 0 auto;
       width: 600px;
       fieldset {
@@ -292,7 +291,6 @@ const Wrapper = styled.div`
         .show {
           visibility: visible;
           opacity: 1;
-
           transform: translateY(15px);
         }
       }
