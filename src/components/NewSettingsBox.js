@@ -4,7 +4,7 @@ import { GameContext } from "../context/GameContext"
 import { toast } from "react-toastify"
 import { useNavigate } from "react-router-dom"
 
-const SettingsBox = () => {
+const NewSettingsBox = () => {
   let navigate = useNavigate()
   const {
     playerName,
@@ -26,16 +26,29 @@ const SettingsBox = () => {
 
   const handlePlayerSubmit = (e) => {
     e.preventDefault()
+    if (name === "") {
+      return toast.error("Please enter a name")
+    }
+    if (operation === "") {
+      return toast.error("Please enter an operation")
+    }
+    if (operation === "multiplication" && level === "") {
+      return toast.error("Please pick a level")
+    }
+    if (gameTime === null) {
+      return toast.error("Please enter a game time")
+    }
     if (name && gameTime && operation) {
       setPlayerNameReducer(name)
       navigate("/")
-    } else if (name === "") {
-      toast.error("Please enter a name")
-    } else if (operation === "") {
-      toast.error("Please enter an operation")
-    } else if (gameTime === null) {
-      toast.error("Please enter a game time")
     }
+    //  else if (name === "") {
+    //   toast.error("Please enter a name")
+    // } else if (operation === "") {
+    //   toast.error("Please enter an operation")
+    // } else if (gameTime === null) {
+    //   toast.error("Please enter a game time")
+    // }
   }
 
   return (
@@ -71,35 +84,36 @@ const SettingsBox = () => {
             />
             Multiplication
           </label>
-          {operation === "multiplication" && (
-            <>
-              {/* <br /> */}
-              <label className="level" htmlFor="easy">
-                <input
-                  onChange={(e) => setLevelReducer(e.target.value)}
-                  type="radio"
-                  name="level"
-                  id="easy"
-                  value="easy"
-                  checked={level === "easy" && true}
-                />
-                easy
-              </label>
-              <label className="level" htmlFor="hard">
-                <input
-                  onChange={(e) => setLevelReducer(e.target.value)}
-                  type="radio"
-                  name="level"
-                  id="hard"
-                  value="hard"
-                  checked={level === "hard" && true}
-                />
-                hard
-              </label>
-            </>
-          )}
 
-          <br />
+          <div
+            className={
+              operation === "multiplication" ? "levels show" : "levels"
+            }
+          >
+            <label className="level" htmlFor="easy">
+              <input
+                onChange={(e) => setLevelReducer(e.target.value)}
+                type="radio"
+                name="level"
+                id="easy"
+                value="easy"
+                checked={level === "easy" && true}
+              />
+              easy
+            </label>
+            <label className="level" htmlFor="hard">
+              <input
+                onChange={(e) => setLevelReducer(e.target.value)}
+                type="radio"
+                name="level"
+                id="hard"
+                value="hard"
+                checked={level === "hard" && true}
+              />
+              hard
+            </label>
+          </div>
+
           <label htmlFor="subtract">
             <input
               onChange={(e) => {
@@ -141,6 +155,7 @@ const SettingsBox = () => {
             90 seconds
           </label>
         </fieldset>
+
         <div className="btnContainer">
           <button type="submit" value="OK" className="okBtn">
             OK
@@ -156,6 +171,48 @@ const Wrapper = styled.div`
   text-align: center;
   font-size: 30px;
   margin-bottom: 20px;
+  h2 {
+    margin: 20px 0 10px;
+    color: #222;
+    filter: drop-shadow(1px 1px 1px #222);
+  }
+
+  fieldset {
+    border: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    .levels {
+      position: absolute;
+      visibility: hidden;
+      opacity: 0;
+      top: 15px;
+      /* left: 20px; */
+      transition: all 500ms ease;
+    }
+    .show {
+      visibility: visible;
+      opacity: 1;
+      transform: translateY(15px);
+      z-index: 50;
+      padding: 0;
+    }
+  }
+  div {
+    margin: 10px;
+  }
+  input {
+    box-shadow: inset 1px 1px 3px 0 rgba(189, 191, 192, 0.9);
+    text-align: center;
+    border-radius: 5px;
+    font-size: 24px;
+    /* margin: 10px 10px; */
+  }
+  label {
+    cursor: pointer;
+    padding: 5px 10px;
+  }
 
   .playerName {
     display: flex;
@@ -163,32 +220,11 @@ const Wrapper = styled.div`
     justify-content: center;
     align-items: center;
   }
-  h2 {
-    margin: 20px 0 10px;
-    color: #222;
-    filter: drop-shadow(1px 1px 1px #222);
-  }
-  fieldset {
-    border: none;
-  }
+
   .settingsForm {
     margin: 0 auto;
-    max-width: 700px;
-    font-size: 26px;
-    div {
-      margin: 10px;
-    }
-    input {
-      box-shadow: inset 1px 1px 3px 0 rgba(189, 191, 192, 0.9);
-      text-align: center;
-      border-radius: 5px;
-      font-size: 24px;
-      margin: 10px 10px;
-    }
-    label {
-      cursor: pointer;
-      padding: 5px 10px;
-    }
+    font-size: 20px;
+
     .multi {
       input {
         margin-bottom: 0;
@@ -197,9 +233,9 @@ const Wrapper = styled.div`
   }
   .level {
     font-size: 1.4rem;
-    input {
+    /* input {
       margin-bottom: 20px;
-    }
+    } */
   }
   .okBtn {
     cursor: pointer;
@@ -223,36 +259,45 @@ const Wrapper = styled.div`
   }
 
   .playerName input {
-    /* margin: auto; */
     max-width: 70%;
   }
 
-  .btnContainer {
-    /* padding-top: 20px; */
-  }
-
-  @media only screen and (min-width: 450px) {
+  @media only screen and (min-width: 600px) {
     h2 {
       font-size: 2.4rem;
-      margin-top: 5px;
     }
     label {
       font-size: 1.4rem;
     }
+    .settingsForm {
+      border: 1px solid red;
+      margin: 0 auto;
+      width: 600px;
+      fieldset {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        position: relative;
+        .levels {
+          position: absolute;
+          visibility: hidden;
+          opacity: 0;
+          top: 15px;
+          left: 121px;
+          transition: all 500ms ease;
+          label {
+            padding: 0;
+          }
+        }
+        .show {
+          visibility: visible;
+          opacity: 1;
 
-    .playerName {
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-    }
-    .playerName input {
-      margin: 0 0;
-    }
-    .btnContainer {
-      margin-top: 0;
-      /* padding-top: 12px; */
+          transform: translateY(15px);
+        }
+      }
     }
   }
 `
 
-export default SettingsBox
+export default NewSettingsBox
