@@ -283,7 +283,7 @@ const Wrapper = styled.div`
           visibility: hidden;
           opacity: 0;
           top: 15px;
-          left: 121px;
+          left: 140px;
           transition: all 500ms ease;
           label {
             padding: 0;
