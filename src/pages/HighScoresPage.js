@@ -23,7 +23,6 @@ const HighScoresPage = () => {
 
   useEffect(() => {
     fetchHighScores()
-    // console.log('highscores fetch')
   }, [gameOver])
 
 

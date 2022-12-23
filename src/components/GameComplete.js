@@ -23,7 +23,6 @@ const GameComplete = () => {
       }),
     })
     const data = await response.json()
-    // console.log(data)
   }
 
   useEffect(() => {
