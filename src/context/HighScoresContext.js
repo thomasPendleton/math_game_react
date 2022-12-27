@@ -1,14 +1,11 @@
 import React, { useEffect, useState } from "react"
-import axios from "axios"
 import { GameContext } from "./GameContext"
 import { useContext } from "react"
 const HighScoresContext = React.createContext()
 
-
 const HighScoresContextProvider = ({ children }) => {
   const [ScoreData, setData] = useState({})
   const { gameOver } = useContext(GameContext)
-
 
   const fetchHighScores = async () => {
     try {
@@ -20,14 +17,11 @@ const HighScoresContextProvider = ({ children }) => {
     } catch (error) {
       return console.log(error)
     }
-   
   }
 
   // useEffect(() => {
   //   fetchHighScores()
   // }, [gameOver])
-
-  // console.log(ScoreData, gameOver)
 
   return (
     <HighScoresContext.Provider value={{ ScoreData }}>
