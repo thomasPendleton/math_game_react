@@ -11,7 +11,7 @@ const StatusBar = () => {
     correct,
     wrong,
     setGameOver,
-    setGameTime,
+    setGameTimeReducer,
     gameTime,
     gameOver,
     setCorrect,
@@ -28,7 +28,7 @@ const StatusBar = () => {
       setCorrect(0)
       setWrong(0)
       setGameOver(false)
-      setGameTime(gameTime)
+      setGameTimeReducer(gameTime)
       setPlaying(true)
       navigate("/play")
     }

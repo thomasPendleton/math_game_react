@@ -8,7 +8,7 @@ const NewSettingsBox = () => {
   let navigate = useNavigate()
   const {
     playerName,
-    setGameTime,
+    setGameTimeReducer,
     setOperationReducer,
     operation,
     setPlayerNameReducer,
@@ -42,13 +42,6 @@ const NewSettingsBox = () => {
       setPlayerNameReducer(name)
       navigate("/")
     }
-    //  else if (name === "") {
-    //   toast.error("Please enter a name")
-    // } else if (operation === "") {
-    //   toast.error("Please enter an operation")
-    // } else if (gameTime === null) {
-    //   toast.error("Please enter a game time")
-    // }
   }
 
   return (
@@ -130,10 +123,10 @@ const NewSettingsBox = () => {
           </label>
         </fieldset>
 
-        <fieldset onChange={(e) => setGameTime(e.target.value)}>
+        <fieldset onChange={(e) => setGameTimeReducer(e.target.value)}>
           <label htmlFor="45">
             <input
-              onChange={(e) => setGameTime(e.target.value)}
+              onChange={(e) => setGameTimeReducer(e.target.value)}
               checked={gameTime === "45" && true}
               type="radio"
               name="time"
@@ -145,7 +138,7 @@ const NewSettingsBox = () => {
           <br />
           <label htmlFor="90">
             <input
-              onChange={(e) => setGameTime(e.target.value)}
+              onChange={(e) => setGameTimeReducer(e.target.value)}
               checked={gameTime === "90" && true}
               type="radio"
               name="time"

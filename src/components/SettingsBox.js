@@ -7,8 +7,9 @@ import { useNavigate } from "react-router-dom"
 const SettingsBox = () => {
   let navigate = useNavigate()
   const {
+    setGameTimeReducer,
     playerName,
-    setGameTime,
+    // setGameTime,
     setOperationReducer,
     operation,
     setPlayerNameReducer,
@@ -116,10 +117,10 @@ const SettingsBox = () => {
           </label>
         </fieldset>
 
-        <fieldset onChange={(e) => setGameTime(e.target.value)}>
+        <fieldset onChange={(e) => setGameTimeReducer(e.target.value)}>
           <label htmlFor="45">
             <input
-              onChange={(e) => setGameTime(e.target.value)}
+              onChange={(e) => setGameTimeReducer(e.target.value)}
               checked={gameTime === "45" && true}
               type="radio"
               name="time"
@@ -131,7 +132,7 @@ const SettingsBox = () => {
           <br />
           <label htmlFor="90">
             <input
-              onChange={(e) => setGameTime(e.target.value)}
+              onChange={(e) => setGameTimeReducer(e.target.value)}
               checked={gameTime === "90" && true}
               type="radio"
               name="time"

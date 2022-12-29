@@ -14,12 +14,11 @@ const initialState = {
   playerName: "",
   operation: "",
   highScores: getLocalStorage(),
-  gameTime: 45,
+  gameTime: null,
   level: "easy",
 }
 
 const GameContextProvider = ({ children }) => {
-  const [gameTime, setGameTime] = useState(null)
   const [correct, setCorrect] = useState(0)
   const [wrong, setWrong] = useState(0)
   const [firstNumber, setFirstNumber] = useState(0)
@@ -41,7 +40,7 @@ const GameContextProvider = ({ children }) => {
       scores = scores.filter((item) => item.playerName !== "")
       scores = scores.filter((item) => item.gameTime > 30)
       scores = scores.filter((item) => item.correct !== 0)
-
+      const { gameTime } = state
       const newHighScore = {
         playerName: state.playerName,
         operation: state.operation,
@@ -115,7 +114,7 @@ const GameContextProvider = ({ children }) => {
       setWrong((prev) => prev + 1)
     }
   }
-
+  
   return (
     <GameContext.Provider
       value={{
@@ -129,8 +128,8 @@ const GameContextProvider = ({ children }) => {
         setWrong,
         firstNumber,
         secondNumber,
-        gameTime,
-        setGameTime,
+        // gameTime,
+        // setGameTime,
         setGameOver,
         gameOver,
         playing,
