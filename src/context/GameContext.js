@@ -16,6 +16,7 @@ const initialState = {
   highScores: getLocalStorage(),
   gameTime: null,
   level: "easy",
+  isPlaying: false,
 }
 
 const GameContextProvider = ({ children }) => {
@@ -26,7 +27,6 @@ const GameContextProvider = ({ children }) => {
   const [correctAnswer, setCorrectAnswer] = useState(0)
   const [answerSubmitted, setanswerSubmitted] = useState(true)
   const [gameOver, setGameOver] = useState(false)
-  const [playing, setPlaying] = useState(false)
 
   const [answeredWrong, setAnsweredWrong] = useState([])
 
@@ -66,6 +66,9 @@ const GameContextProvider = ({ children }) => {
   }
   const setLevelReducer = (level) => {
     dispatch({ type: "SET_LEVEL", payload: level })
+  }
+  const setIsPlayingReducer = (boolean) => {
+    dispatch({ type: "SET_PLAYING", payload: boolean })
   }
 
   useEffect(() => {
@@ -114,7 +117,7 @@ const GameContextProvider = ({ children }) => {
       setWrong((prev) => prev + 1)
     }
   }
-  
+
   return (
     <GameContext.Provider
       value={{
@@ -128,13 +131,10 @@ const GameContextProvider = ({ children }) => {
         setWrong,
         firstNumber,
         secondNumber,
-        // gameTime,
-        // setGameTime,
         setGameOver,
         gameOver,
-        playing,
-        setPlaying,
         setPlayerNameReducer,
+        setIsPlayingReducer,
         setOperationReducer,
         setGameTimeReducer,
         setLevelReducer,

@@ -12,12 +12,12 @@ const StatusBar = () => {
     wrong,
     setGameOver,
     setGameTimeReducer,
+    setIsPlayingReducer,
     gameTime,
     gameOver,
     setCorrect,
     setWrong,
-    playing,
-    setPlaying,
+    isPlaying,
     playerName,
     setAnsweredWrong,
   } = React.useContext(GameContext)
@@ -29,7 +29,7 @@ const StatusBar = () => {
       setWrong(0)
       setGameOver(false)
       setGameTimeReducer(gameTime)
-      setPlaying(true)
+      setIsPlayingReducer(true)
       navigate("/play")
     }
   }
@@ -37,14 +37,14 @@ const StatusBar = () => {
     <>
       <Wrapper className="header">
         <div
-          className={playing || !playerName ? "play_now disabled" : "play_now"}
+          className={isPlaying || !playerName ? "play_now disabled" : "play_now"}
           onClick={handlePlaying}
         >
           Play Now
         </div>
         <div>Correct: {correct}</div>
 
-        {playing && !gameOver ? (
+        {isPlaying && !gameOver ? (
           <CountDownTime />
         ) : (
           <NavLink className="settings" to="/settings">
@@ -57,7 +57,7 @@ const StatusBar = () => {
 
         <NavLink
           to="/highscores"
-          className={playing ? "high_scores disabled" : "high_scores"}
+          className={isPlaying ? "high_scores disabled" : "high_scores"}
         >
           High Scores
         </NavLink>
