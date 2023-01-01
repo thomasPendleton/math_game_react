@@ -17,6 +17,7 @@ const initialState = {
   gameTime: null,
   level: "easy",
   isPlaying: false,
+  gameOver: false,
 }
 
 const GameContextProvider = ({ children }) => {
@@ -26,7 +27,6 @@ const GameContextProvider = ({ children }) => {
   const [secondNumber, setSecondNumber] = useState(0)
   const [correctAnswer, setCorrectAnswer] = useState(0)
   const [answerSubmitted, setanswerSubmitted] = useState(true)
-  const [gameOver, setGameOver] = useState(false)
 
   const [answeredWrong, setAnsweredWrong] = useState([])
 
@@ -34,7 +34,7 @@ const GameContextProvider = ({ children }) => {
 
   useEffect(() => {
     if (correct === 0) return
-    if (gameOver && state.playerName) {
+    if (state.gameOver && state.playerName) {
       let scores = JSON.parse(localStorage.getItem("scores") || "[]")
       // the next 3 filters are used during testing only.
       scores = scores.filter((item) => item.playerName !== "")
@@ -53,7 +53,7 @@ const GameContextProvider = ({ children }) => {
       localStorage.setItem("scores", JSON.stringify(scores))
     }
     dispatch({ type: "SET_HIGH_SCORES", payload: getLocalStorage() })
-  }, [gameOver])
+  }, [state.gameOver])
 
   const setPlayerNameReducer = (name) => {
     dispatch({ type: "SET_PLAYER_NAME", payload: name })
@@ -69,6 +69,9 @@ const GameContextProvider = ({ children }) => {
   }
   const setIsPlayingReducer = (boolean) => {
     dispatch({ type: "SET_PLAYING", payload: boolean })
+  }
+  const gameOverReducer = (boolean) => {
+    dispatch({ type: "SET_GAMEOVER", payload: boolean })
   }
 
   useEffect(() => {
@@ -131,9 +134,8 @@ const GameContextProvider = ({ children }) => {
         setWrong,
         firstNumber,
         secondNumber,
-        setGameOver,
-        gameOver,
         setPlayerNameReducer,
+        gameOverReducer,
         setIsPlayingReducer,
         setOperationReducer,
         setGameTimeReducer,

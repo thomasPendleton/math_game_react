@@ -5,7 +5,7 @@ import { GameContext } from "../context/GameContext"
 
 const CountDownTime = () => {
   let navigate = useNavigate()
-  const { gameTime, setGameOver, setIsPlayingReducer } = React.useContext(GameContext)
+  const { gameTime, gameOverReducer, setIsPlayingReducer } = React.useContext(GameContext)
   const [timeLeft, setTimeLeft] = useState(gameTime)
 
   useEffect(() => {
@@ -15,7 +15,7 @@ const CountDownTime = () => {
       }
       if (timeLeft <= 0) {
         clearInterval(myInterval)
-        setGameOver(true)
+        gameOverReducer(true)
         setIsPlayingReducer(false)
         navigate('/gamecomplete')
       }

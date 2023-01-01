@@ -10,7 +10,7 @@ const StatusBar = () => {
   const {
     correct,
     wrong,
-    setGameOver,
+    gameOverReducer,
     setGameTimeReducer,
     setIsPlayingReducer,
     gameTime,
@@ -27,7 +27,7 @@ const StatusBar = () => {
       setAnsweredWrong([])
       setCorrect(0)
       setWrong(0)
-      setGameOver(false)
+      gameOverReducer(false)
       setGameTimeReducer(gameTime)
       setIsPlayingReducer(true)
       navigate("/play")

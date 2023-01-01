@@ -27,6 +27,9 @@ function reducer (state, action){
     //   console.log(action.payload)
       return { ...state, isPlaying: action.payload }
     }
+    if(action.type === "SET_GAMEOVER"){
+        return {...state, gameOver: action.payload}
+    }
     
     return {...state}
 }
