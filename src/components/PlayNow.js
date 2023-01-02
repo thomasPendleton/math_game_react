@@ -14,6 +14,7 @@ const PlayNow = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault()
+    if(answerValue === '') return
     checkAnswer(+answerValue)
     setAnswerValue("")
   }

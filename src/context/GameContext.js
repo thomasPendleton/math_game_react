@@ -18,6 +18,7 @@ const initialState = {
   level: "easy",
   isPlaying: false,
   gameOver: false,
+  correct: 0,
 }
 
 const GameContextProvider = ({ children }) => {
@@ -33,14 +34,14 @@ const GameContextProvider = ({ children }) => {
   const [state, dispatch] = useReducer(reducer, initialState)
 
   useEffect(() => {
-    if (correct === 0) return
+    if (state.correct === 0) return
     if (state.gameOver && state.playerName) {
       let scores = JSON.parse(localStorage.getItem("scores") || "[]")
       // the next 3 filters are used during testing only.
       scores = scores.filter((item) => item.playerName !== "")
       scores = scores.filter((item) => item.gameTime > 30)
       scores = scores.filter((item) => item.correct !== 0)
-      const { gameTime } = state
+      const { gameTime, correct } = state
       const newHighScore = {
         playerName: state.playerName,
         operation: state.operation,
@@ -73,7 +74,9 @@ const GameContextProvider = ({ children }) => {
   const gameOverReducer = (boolean) => {
     dispatch({ type: "SET_GAMEOVER", payload: boolean })
   }
-
+  const setCorrectReducer = (number) => {
+    dispatch({ type: "SET_CORRECT", payload: number })
+  }
   useEffect(() => {
     function randomMath(x) {
       const highestNumber =
@@ -105,7 +108,7 @@ const GameContextProvider = ({ children }) => {
     setanswerSubmitted(!answerSubmitted)
     if (correctAnswer === value) {
       new Audio(correctSound).play()
-      setCorrect((prev) => prev + 1)
+      setCorrectReducer( state.correct + 1)
     } else {
       let incorrect = {
         firstNumber,
@@ -128,12 +131,11 @@ const GameContextProvider = ({ children }) => {
         answeredWrong,
         setAnsweredWrong,
         checkAnswer,
-        correct,
-        setCorrect,
         wrong,
         setWrong,
         firstNumber,
         secondNumber,
+        setCorrectReducer,
         setPlayerNameReducer,
         gameOverReducer,
         setIsPlayingReducer,

@@ -1,12 +1,14 @@
 import React, { useState, useEffect } from "react"
 import styled from "styled-components"
+import AdminButton from "../components/AdminButton"
 import SingleHighScore from "../components/SingleHighScore"
 import TableHeader from "../components/TableHeader"
 import { GameContext } from "../context/GameContext"
-
+// import { HighScoresContext } from "../context/HighScoresContext"
 
 const HighScoresPage = () => {
   const { gameOver } = React.useContext(GameContext)
+  // const { fetchHighScoresData } = React.useContext(HighScoresContext)
   const [scoreState, setScoreState] = useState([])
 
   const fetchHighScores = async () => {
@@ -30,13 +32,14 @@ const HighScoresPage = () => {
       <h1>High Scores Global Leaderboard</h1>
       <div className="container">
         <TableHeader />
-        {scoreState.length === 0 ? <h1>Loading...</h1>: null}
+        {scoreState.length === 0 ? <h1>Loading...</h1> : null}
         {scoreState.map((singleScore, idx) => {
           return (
             <SingleHighScore key={singleScore.id} {...singleScore} idx={idx} />
           )
         })}
       </div>
+      {/* <AdminButton /> */}
     </Wrapper>
   )
 }

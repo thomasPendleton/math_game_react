@@ -15,7 +15,7 @@ const StatusBar = () => {
     setIsPlayingReducer,
     gameTime,
     gameOver,
-    setCorrect,
+    setCorrectReducer,
     setWrong,
     isPlaying,
     playerName,
@@ -25,7 +25,7 @@ const StatusBar = () => {
   const handlePlaying = () => {
     if (playerName) {
       setAnsweredWrong([])
-      setCorrect(0)
+      setCorrectReducer(0)
       setWrong(0)
       gameOverReducer(false)
       setGameTimeReducer(gameTime)
