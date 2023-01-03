@@ -22,7 +22,6 @@ const initialState = {
 }
 
 const GameContextProvider = ({ children }) => {
-  const [correct, setCorrect] = useState(0)
   const [wrong, setWrong] = useState(0)
   const [firstNumber, setFirstNumber] = useState(0)
   const [secondNumber, setSecondNumber] = useState(0)
