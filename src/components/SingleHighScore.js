@@ -1,24 +1,55 @@
-import React from "react"
+import React, { useState } from "react"
 import styled from "styled-components"
 import { FaCrown } from "react-icons/fa"
+import { MdRemoveCircle } from "react-icons/md"
 
-const SingleHighScore = (singleScore) => {
-  const { name, gametime, score, operator, level, missed, date, idx } =
-    singleScore
+const SingleHighScore = ({
+  id,
+  name,
+  gametime,
+  score,
+  operator,
+  level,
+  missed,
+  date,
+  idx,
+  loggedIn,
+  removeScores,
+  setRemoveScores,
+}) => {
+  const [clicked, setClicked] = useState(false)
   const dateData = new Date(date)
+
+  const handleRemove = (id) => {
+    if (!removeScores.includes(id)) {
+      setRemoveScores((prev) => [...prev, id])
+    } else {
+      setRemoveScores(prev => [...prev].filter(item => item !== id ))
+    }
+    setClicked(!clicked)
+  }
 
   return (
     <Wrapper>
-      {idx === 0 ? <FaCrown /> : null}
+      {loggedIn ? (
+        <MdRemoveCircle className="remove" onClick={() => handleRemove(id)} />
+      ) : null}
+      {idx === 0 ? <FaCrown className="crown" /> : null}
 
-      <h4>{idx + 1}. </h4>
-      <h4>{name}</h4>
-      <h4>{score}</h4>
-      <h4 className="level">{level ? level : "Easy"}</h4>
-      <h4>{gametime}</h4>
-      <h4>{operator === "multiplication" ? "Multiply" : "Subtract"}</h4>
-      <h4 className="wrong">{missed}</h4>
-      <h4 className="date">{dateData.toLocaleDateString()}</h4>
+      <h4 className={clicked ? "remove-me" : null}>{idx + 1}. </h4>
+      <h4 className={clicked ? "remove-me" : null}>{name}</h4>
+      <h4 className={clicked ? "remove-me" : null}>{score}</h4>
+      <h4 className={clicked ? "remove-me level" : "level"}>
+        {level ? level : "Easy"}
+      </h4>
+      <h4 className={clicked ? "remove-me" : null}>{gametime}</h4>
+      <h4 className={clicked ? "remove-me" : null}>
+        {operator === "multiplication" ? "Multiply" : "Subtract"}
+      </h4>
+      <h4 className={clicked ? "remove-me wrong" : "wrong"}>{missed}</h4>
+      <h4 className={clicked ? "remove-me date" : "date"}>
+        {dateData.toLocaleDateString()}
+      </h4>
     </Wrapper>
   )
 }
@@ -34,13 +65,22 @@ const Wrapper = styled.main`
   border-radius: 5px;
   background-color: white;
   box-shadow: 3px 3px 6px 1px rgb(68 68 68 / 0.3);
-  svg {
+  svg.remove {
+    position: absolute;
+    top: 50%;
+    left: 30px;
+    transform: translateY(-50%);
+    color: red;
+    cursor: pointer;
+    font-size: 1.2rem;
+  }
+  svg.crown {
     font-size: 1.3rem;
     animation: wiggle 2.5s ease infinite;
     position: absolute;
     top: -8px;
     left: 3px;
-    color: #FFD700;
+    color: #ffd700;
   }
   .date,
   .wrong {
@@ -55,6 +95,10 @@ const Wrapper = styled.main`
   .level {
     text-transform: capitalize;
   }
+  .remove-me {
+    color: #8b0000;
+    text-decoration: line-through;
+  }
 
   @media only screen and (min-width: 500px) {
     font-size: 1rem;
@@ -63,6 +107,15 @@ const Wrapper = styled.main`
       display: grid;
     }
     grid-template-columns: 30px 1fr 40px 45px 40px 80px 40px 100px;
+    svg.remove {
+      position: absolute;
+      top: 50%;
+      left: -40px;
+      transform: translateY(-50%);
+      color: red;
+      cursor: pointer;
+      font-size: 1.4rem;
+    }
   }
   @keyframes wiggle {
     0% {
@@ -85,11 +138,11 @@ const Wrapper = styled.main`
     0% {
       transform: rotate(-20deg);
     }
-   
+
     50% {
       transform: rotate(-10deg);
     }
-    
+
     100% {
       transform: rotate(-20deg);
     }

@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react"
 import styled from "styled-components"
 import AdminButton from "../components/AdminButton"
+import AdminLogin from "../components/AdminLogin"
 import SingleHighScore from "../components/SingleHighScore"
 import TableHeader from "../components/TableHeader"
 import { GameContext } from "../context/GameContext"
@@ -10,8 +11,27 @@ const HighScoresPage = () => {
   const { gameOver } = React.useContext(GameContext)
   // const { fetchHighScoresData } = React.useContext(HighScoresContext)
   const [scoreState, setScoreState] = useState([])
+  const [adminMode, setAdminMode] = useState(false)
+  const [loggedIn, setLoggedIn] = useState(false)
+  const [removeScores, setRemoveScores] = useState([])
+
+  console.log(removeScores)
 
   const fetchHighScores = async () => {
+    try {
+      const response = await fetch(
+        "https://shrouded-refuge-51814.herokuapp.com/getscores"
+      )
+      const data = await response.json()
+      setScoreState(data)
+    } catch (error) {
+      return console.log(error)
+    }
+  }
+
+  const modifyHighScores = async () => {
+    //  add removeScores to fetch
+    if (removeScores.length === 0) return
     try {
       const response = await fetch(
         "https://shrouded-refuge-51814.herokuapp.com/getscores"
@@ -35,17 +55,41 @@ const HighScoresPage = () => {
         {scoreState.length === 0 ? <h1>Loading...</h1> : null}
         {scoreState.map((singleScore, idx) => {
           return (
-            <SingleHighScore key={singleScore.id} {...singleScore} idx={idx} />
+            <SingleHighScore
+              key={singleScore.id}
+              {...singleScore}
+              admin={adminMode}
+              loggedIn={loggedIn}
+              idx={idx}
+              setRemoveScores={setRemoveScores}
+              removeScores={removeScores}
+            />
           )
         })}
       </div>
-      {/* <AdminButton /> */}
+      {/* {adminMode ? (
+        <AdminLogin
+          setAdminMode={setAdminMode}
+          adminMode={adminMode}
+          setLoggedIn={setLoggedIn}
+          loggedIn={loggedIn}
+        />
+      ) : null}
+
+      <AdminButton
+        setRemoveScores={setRemoveScores}
+        modifyHighScores={modifyHighScores}
+        setAdminMode={setAdminMode}
+        adminMode={adminMode}
+        loggedIn={loggedIn}
+        setLoggedIn={setLoggedIn}
+      /> */}
     </Wrapper>
   )
 }
 
 const Wrapper = styled.main`
-  margin: 10px auto;
+  margin: 10px auto 60px;
   .container {
     box-shadow: 3px 3px 5px 1px rgb(68 68 68 / 0.4);
     display: flex;
