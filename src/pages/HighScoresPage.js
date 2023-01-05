@@ -15,7 +15,7 @@ const HighScoresPage = () => {
   const [loggedIn, setLoggedIn] = useState(false)
   const [removeScores, setRemoveScores] = useState([])
 
-  console.log(removeScores)
+  // console.log(removeScores)
 
   const fetchHighScores = async () => {
     try {
@@ -29,19 +29,28 @@ const HighScoresPage = () => {
     }
   }
 
-  const modifyHighScores = async () => {
+  const modifyHighScores = async (scoresToRemove) => {
     //  add removeScores to fetch
-    if (removeScores.length === 0) return
+    console.log('remove ', scoresToRemove)
     try {
       const response = await fetch(
-        "https://shrouded-refuge-51814.herokuapp.com/getscores"
+        "https://shrouded-refuge-51814.herokuapp.com/deleteScores", {
+          method: "delete",
+          headers: {"Content-Type": "application/json"},
+          body: JSON.stringify({
+            removeScores
+          })
+        }
       )
       const data = await response.json()
-      setScoreState(data)
+      console.log(data)
+      fetchHighScores()
     } catch (error) {
       return console.log(error)
     }
   }
+
+  
 
   useEffect(() => {
     fetchHighScores()
@@ -67,7 +76,7 @@ const HighScoresPage = () => {
           )
         })}
       </div>
-      {/* {adminMode ? (
+      {adminMode ? (
         <AdminLogin
           setAdminMode={setAdminMode}
           adminMode={adminMode}
@@ -83,7 +92,8 @@ const HighScoresPage = () => {
         adminMode={adminMode}
         loggedIn={loggedIn}
         setLoggedIn={setLoggedIn}
-      /> */}
+        removeScores={removeScores}
+      />
     </Wrapper>
   )
 }

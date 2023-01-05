@@ -10,19 +10,26 @@ const GameComplete = () => {
     React.useContext(GameContext)
 
   const newScoreFetch = async () => {
-    const response = await fetch("https://shrouded-refuge-51814.herokuapp.com/score", {
-      method: "post",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({
-        playerName,
-        gameTime,
-        correct,
-        wrong,
-        operation, 
-        level
-      }),
-    })
-    const data = await response.json()
+    try {
+      const response = await fetch(
+        "https://shrouded-refuge-51814.herokuapp.com/score",
+        {
+          method: "post",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            playerName,
+            gameTime,
+            correct,
+            wrong,
+            operation,
+            level,
+          }),
+        }
+      )
+      const data = await response.json()
+    } catch (error) {
+      console.log(error)
+    }
   }
 
   useEffect(() => {

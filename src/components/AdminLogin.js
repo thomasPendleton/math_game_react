@@ -2,14 +2,14 @@ import React, {useState} from "react"
 import styled from "styled-components"
 const AdminLogin = ({ setAdminMode, adminMode, setLoggedIn, loggedIn }) => {
   const [value, setValue] = useState("")
-  console.log(adminMode)
+//   console.log(adminMode)
   const handleChange = (e) => {
     setValue(e.target.value)
   }
   const handleSubmit = (e) => {
     e.preventDefault()
     if (value === "123") {
-      console.log("enter")
+    //   console.log("enter")
       setLoggedIn(true)
       setValue("")
     }
@@ -35,12 +35,14 @@ const AdminLogin = ({ setAdminMode, adminMode, setLoggedIn, loggedIn }) => {
 
 const Wrapper = styled.div`
   position: absolute;
-  bottom: 0;
+  bottom: 50px;
   left: 0;
-  width: 250px;
+  padding: 20px;
+  /* width: 250px; */
   display: flex;
   justify-content: center;
   border-radius: 5px;
-  background-color: beige;
+  background-color: #fefefe;
+  border: 1px solid #222;
 `
 export default AdminLogin
